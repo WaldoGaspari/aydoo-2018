@@ -9,12 +9,12 @@ public class Program {
     	Scanner entrada = new Scanner(System.in);
 	    int numero = entrada.nextInt();
 	    int[] resultado = new int[numero];
-	    for(int i = 0; i<numero; i++){
+	    for (int i = 0; i < numero; i++) {
 	    	resultado[i] = SerieFibonacci.calcularSerieDeFibonacci(i);
 	    }
 	    System.out.printf("fibo<%d>: ", numero);
-	    for(int i = 0; i < numero; i++){	
-	    	System.out.printf("%d ",resultado[i]);
+	    for(int i = 0; i < numero; i++) {	
+	    	System.out.printf("%d ", resultado[i]);
 	    }
     }
 }
