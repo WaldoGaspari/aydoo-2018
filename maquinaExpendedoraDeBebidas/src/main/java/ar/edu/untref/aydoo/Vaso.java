@@ -41,6 +41,10 @@ public class Vaso {
 		this.tieneCafe = true;
 	}
 	
+	public void cambiarContenidoATe() {
+		this.tieneTe = true;
+	}
+	
 	public void ponerLeche() {
 		this.tieneLeche = true;
 	}
