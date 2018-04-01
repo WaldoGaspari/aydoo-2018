@@ -23,7 +23,7 @@ public class Vaso {
 	}
 
 	public boolean tieneAzucar() {
-		if(this.cantidadDeAzucar > 0) {
+		if 	(this.cantidadDeAzucar > 0) {
 			return true;	
 		} else {
 			return false;
@@ -50,7 +50,7 @@ public class Vaso {
 		this.tieneLeche = true;
 	}
 	
-	public void ponerNCucharadasDeAzucar(int cantidadDeAzucar) {
-		this.cantidadDeAzucar = cantidadDeAzucar;
+	public void ponerNCucharadasDeAzucar(int cucharadasDeAzucar) {
+		this.cantidadDeAzucar = cucharadasDeAzucar;
 	}
 }
