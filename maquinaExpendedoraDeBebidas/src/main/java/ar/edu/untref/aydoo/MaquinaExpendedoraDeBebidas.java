@@ -6,13 +6,13 @@ public class MaquinaExpendedoraDeBebidas {
 	private Azucarero azucarero = new Azucarero();
 	private HacedorDeTeConLeche hacedorDeTeConLeche = new HacedorDeTeConLeche();
 	
-	public void hacerCafeConLecheConNDeAzucar(Vaso unVaso, int cantidadAzucar) {
-		unVaso = this.hacedorDeCafeConLeche.prepararUnCafeConLeche(unVaso);
-		unVaso = this.azucarero.agregarNCucharadasDeAzucar(unVaso, cantidadAzucar);
+	public void hacerCafeConLecheConNDeAzucar(Vaso vaso, int cantidadAzucar) {
+		vaso = this.hacedorDeCafeConLeche.prepararUnCafeConLeche(vaso);
+		vaso = this.azucarero.agregarNCucharadasDeAzucar(vaso, cantidadAzucar);
 	}
 
-	public void hacerTeConLecheConNDeAzucar(Vaso unVaso, int cantidadAzucar) {
-		unVaso = this.hacedorDeTeConLeche.prepararUnTeConLeche(unVaso);
-		unVaso = this.azucarero.agregarNCucharadasDeAzucar(unVaso, cantidadAzucar);
+	public void hacerTeConLecheConNDeAzucar(Vaso vaso, int cantidadAzucar) {
+		vaso = this.hacedorDeTeConLeche.prepararUnTeConLeche(vaso);
+		vaso = this.azucarero.agregarNCucharadasDeAzucar(vaso, cantidadAzucar);
 	}
 }

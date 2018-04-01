@@ -5,10 +5,9 @@ public class HacedorDeTeConLeche {
 	private HacedorDeTe hacedorDeTe = new HacedorDeTe();
 	private Lechero lechero = new Lechero();
 	
-	public Vaso prepararUnTeConLeche(Vaso unVaso) {
-		unVaso = this.hacedorDeTe.llenarConTe(unVaso);
-		unVaso = this.lechero.llenarConLeche(unVaso);
-		return unVaso;
+	public Vaso prepararUnTeConLeche(Vaso vaso) {
+		vaso = this.hacedorDeTe.llenarConTe(vaso);
+		vaso = this.lechero.llenarConLeche(vaso);
+		return vaso;
 	}
-
 }

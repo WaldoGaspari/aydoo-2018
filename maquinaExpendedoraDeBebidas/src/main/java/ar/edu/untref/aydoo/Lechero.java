@@ -6,5 +6,4 @@ public class Lechero {
 		vaso.ponerLeche();
 		return vaso;
 	}
-
 }

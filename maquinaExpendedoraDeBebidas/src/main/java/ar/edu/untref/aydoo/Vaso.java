@@ -13,6 +13,7 @@ public class Vaso {
 		this.tieneTe = false;
 		this.tieneLeche = false;
 	}
+	
 	public int getCantidadDeAzucar() {
 		return this.cantidadDeAzucar;
 	}
@@ -52,5 +53,4 @@ public class Vaso {
 	public void ponerNCucharadasDeAzucar(int cantidadDeAzucar) {
 		this.cantidadDeAzucar = cantidadDeAzucar;
 	}
-
 }

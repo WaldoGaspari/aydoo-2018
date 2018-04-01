@@ -5,9 +5,9 @@ public class HacedorDeCafeConLeche {
 	private Cafetero cafetero = new Cafetero();
 	private Lechero lechero = new Lechero();
 	
-	public Vaso prepararUnCafeConLeche(Vaso unVaso) {
-		unVaso = this.cafetero.llenarConCafe(unVaso);
-		unVaso = this.lechero.llenarConLeche(unVaso);
-		return unVaso;
+	public Vaso prepararUnCafeConLeche(Vaso vaso) {
+		vaso = this.cafetero.llenarConCafe(vaso);
+		vaso = this.lechero.llenarConLeche(vaso);
+		return vaso;
 	}
 }
