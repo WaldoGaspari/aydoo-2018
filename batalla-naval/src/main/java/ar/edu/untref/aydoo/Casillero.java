@@ -16,5 +16,9 @@ public class Casillero {
 	public void ponerBarco(Barco unBarco) {
 		this.barco = unBarco;
 	}
+	
+	public Barco obtenerBarco() {
+		return this.barco;
+	}
 
 }

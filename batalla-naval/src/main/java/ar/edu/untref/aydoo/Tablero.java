@@ -43,4 +43,8 @@ public class Tablero {
 			this.casilleros[fila][columna].ponerBarco(barco);
 		}
 	}
+
+	public void atacar(int fila, int columna) {
+		this.casilleros[fila][columna].obtenerBarco().tocado();
+	}
 }

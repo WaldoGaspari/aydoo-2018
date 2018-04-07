@@ -49,4 +49,14 @@ public class TestTablero {
 		Assert.assertFalse(tablero.noHayBarcoEnCasillero(4, 2));
 		Assert.assertFalse(tablero.noHayBarcoEnCasillero(5, 2));
 	}
+	
+	@Test
+	public void colocarUnBoteYAtacarloDeberiaEstarHundido() {
+		Barco barco = new Barco(1, 'H');
+		
+		tablero.colocarBarco(5, 3, barco);
+		tablero.atacar(5, 3);
+		
+		Assert.assertTrue(barco.estaHundido());
+	}
 }
