@@ -9,14 +9,14 @@ public class TestBarco {
 	@Test
 	public void barcoDeberiaTenerTamanioAsignadoEnConstructor() {
 		int tamanio = 3;
-		Barco barco = new Barco(tamanio);
+		Barco barco = new Barco(tamanio, 'H');
 		
 		Assert.assertEquals(tamanio, barco.obtenerTamanio());
 	}
 	
 	@Test
 	public void alTocarBarcoDeTamanio1DeberiaEstarHundido() {
-		Barco barco = new Barco(1);
+		Barco barco = new Barco(1, 'V');
 		barco.tocado();
 		
 		Assert.assertTrue(barco.estaHundido());
@@ -24,7 +24,7 @@ public class TestBarco {
 	
 	@Test
 	public void barcoDeTamanioDosNoEstaHundidoSiSeLoTocaUnaVez() {
-		Barco barco = new Barco(2);
+		Barco barco = new Barco(2, 'H');
 		barco.tocado();
 		
 		Assert.assertFalse(barco.estaHundido());
@@ -32,7 +32,7 @@ public class TestBarco {
 	
 	@Test
 	public void barcoDeberiaPoderTocarseMasVecesDeLasDeSuTamanioSinCambiarEstado() {
-		Barco barco = new Barco(1);
+		Barco barco = new Barco(1, 'H');
 		barco.tocado();
 		barco.tocado();
 		

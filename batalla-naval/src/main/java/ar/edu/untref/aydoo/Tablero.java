@@ -30,8 +30,14 @@ public class Tablero {
 
 	public void colocarBarco(int fila, int columna, Barco barco) {
 		if (barco.obtenerTamanio() == 2) {
-			this.casilleros[fila][columna].ponerBarco(barco);
-			this.casilleros[fila][columna+1].ponerBarco(barco);
+			if (barco.obtenerOrientacion() == 'H') {
+				this.casilleros[fila][columna].ponerBarco(barco);
+				this.casilleros[fila][columna + 1].ponerBarco(barco);
+				
+			} else {
+				this.casilleros[fila][columna].ponerBarco(barco);
+				this.casilleros[fila + 1][columna].ponerBarco(barco);
+			}
 			
 		} else {
 			this.casilleros[fila][columna].ponerBarco(barco);
