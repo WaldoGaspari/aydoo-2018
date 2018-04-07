@@ -59,4 +59,25 @@ public class TestTablero {
 		
 		Assert.assertTrue(barco.estaHundido());
 	}
+	
+	@Test
+	public void colocarUnCruzeroYAtacarloUnaSolaVezNoDeberiaEstarHundido() {
+		Barco barco = new Barco(2, 'H');
+		
+		tablero.colocarBarco(5, 3, barco);
+		tablero.atacar(5, 3);
+		
+		Assert.assertFalse(barco.estaHundido());
+	}
+	
+	@Test
+	public void colocarUnCruzeroYAtacarloDeberiaEstarHundido() {
+		Barco barco = new Barco(2, 'V');
+		
+		tablero.colocarBarco(5, 3, barco);
+		tablero.atacar(5, 3);
+		tablero.atacar(6, 3);
+		
+		Assert.assertTrue(barco.estaHundido());
+	}
 }
