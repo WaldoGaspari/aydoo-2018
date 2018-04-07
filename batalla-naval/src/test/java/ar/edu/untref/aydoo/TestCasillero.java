@@ -1,7 +1,5 @@
 package ar.edu.untref.aydoo;
 
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -22,5 +20,4 @@ public class TestCasillero {
 		
 		Assert.assertFalse(casillero.estaVacio());
 	}
-
 }
