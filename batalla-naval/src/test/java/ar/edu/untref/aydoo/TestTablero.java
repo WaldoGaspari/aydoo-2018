@@ -25,4 +25,15 @@ public class TestTablero {
 		
 		Assert.assertFalse(tablero.noHayBarcoEnCasillero(1, 1));
 	}
+	
+	@Test
+	public void alColocarUnBarcoDeTamanio2DeberiaEstarEnDichoLugar() {
+		Tablero tablero = new Tablero();
+		Barco unBarco = new Barco(2);
+		
+		tablero.colocarBarco(2, 1, unBarco);
+		
+		Assert.assertFalse(tablero.noHayBarcoEnCasillero(2, 1));
+		Assert.assertFalse(tablero.noHayBarcoEnCasillero(2, 2));
+	}
 }
