@@ -52,33 +52,33 @@ public class TestTablero {
 	
 	@Test
 	public void colocarUnBoteYAtacarloDeberiaEstarHundido() {
-		Barco barco = new Barco(1, 'H');
+		Barco bote = new Barco(1, 'H');
 		
-		tablero.colocarBarco(5, 3, barco);
+		tablero.colocarBarco(5, 3, bote);
 		tablero.atacar(5, 3);
 		
-		Assert.assertTrue(barco.estaHundido());
+		Assert.assertTrue(bote.estaHundido());
 	}
 	
 	@Test
 	public void colocarUnCruzeroYAtacarloUnaSolaVezNoDeberiaEstarHundido() {
-		Barco barco = new Barco(2, 'H');
+		Barco cruzero = new Barco(2, 'H');
 		
-		tablero.colocarBarco(5, 3, barco);
+		tablero.colocarBarco(5, 3, cruzero);
 		tablero.atacar(5, 3);
 		
-		Assert.assertFalse(barco.estaHundido());
+		Assert.assertFalse(cruzero.estaHundido());
 	}
 	
 	@Test
 	public void colocarUnCruzeroYAtacarloDeberiaEstarHundido() {
-		Barco barco = new Barco(2, 'V');
+		Barco cruzero = new Barco(2, 'V');
 		
-		tablero.colocarBarco(5, 3, barco);
+		tablero.colocarBarco(5, 3, cruzero);
 		tablero.atacar(5, 3);
 		tablero.atacar(6, 3);
 		
-		Assert.assertTrue(barco.estaHundido());
+		Assert.assertTrue(cruzero.estaHundido());
 	}
 	
 	@Test
@@ -89,14 +89,24 @@ public class TestTablero {
 	}
 	
 	@Test (expected = Error.class)
-	public void alColocarUnBarcoNoDeberiaColocarseOtroEnElMismoLugar() {
-		Barco unBarco = new Barco(1, 'V');
-		Barco otroBarco = new Barco(1, 'H');
+	public void alColocarUnBoteNoDeberiaColocarseOtroEnElMismoLugar() {
+		Barco unBote = new Barco(1, 'V');
+		Barco otroBote = new Barco(1, 'H');
 		
-		tablero.colocarBarco(3, 1, unBarco);
-		tablero.colocarBarco(3, 1, otroBarco);
+		tablero.colocarBarco(3, 1, unBote);
+		tablero.colocarBarco(3, 1, otroBote);
 		
-		Assert.assertEquals(unBarco, tablero.obtenerCasillero(3, 1).obtenerBarco());
+		Assert.assertEquals(unBote, tablero.obtenerCasillero(3, 1).obtenerBarco());
 	}
 	
+	@Test (expected = Error.class)
+	public void alColocarUnCruzeroNoDeberiaColocarseOtro() {
+		Barco unCruzero = new Barco(1, 'V');
+		Barco otroCruzero = new Barco(1, 'H');
+		
+		tablero.colocarBarco(3, 1, unCruzero);
+		tablero.colocarBarco(3, 1, otroCruzero);
+		
+		Assert.assertEquals(unCruzero, tablero.obtenerCasillero(3, 1).obtenerBarco());
+	}
 }
