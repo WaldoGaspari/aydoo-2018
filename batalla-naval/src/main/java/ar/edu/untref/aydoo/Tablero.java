@@ -29,23 +29,33 @@ public class Tablero {
 	}
 
 	public void colocarBarco(int fila, int columna, Barco barco) {
-		if (this.casilleros[fila][columna].estaVacio()) {
-			if (barco.obtenerTamanio() == 2) {
-				if (barco.obtenerOrientacion() == 'H') {
-					this.casilleros[fila][columna].ponerBarco(barco);
-					this.casilleros[fila][columna + 1].ponerBarco(barco);
+		try {
+			if (this.casilleros[fila][columna].estaVacio()) {
+				if (fila + 1 < this.ancho && columna + 1 < this.largo) {
+					if (barco.obtenerTamanio() == 2) {
+						if (barco.obtenerOrientacion() == 'H') {
+							this.casilleros[fila][columna].ponerBarco(barco);
+							this.casilleros[fila][columna + 1].ponerBarco(barco);
+							
+						} else {
+							this.casilleros[fila][columna].ponerBarco(barco);
+							this.casilleros[fila + 1][columna].ponerBarco(barco);
+						}
+						
+					} else {
+						this.casilleros[fila][columna].ponerBarco(barco);
+					}
 					
 				} else {
-					this.casilleros[fila][columna].ponerBarco(barco);
-					this.casilleros[fila + 1][columna].ponerBarco(barco);
+					throw new Error ("No se puede colocar el barco. Parte del mismo se encuentra fuera de los limites del tablero");
 				}
 				
 			} else {
-				this.casilleros[fila][columna].ponerBarco(barco);
+				throw new Error ( "No se puede colocar el barco. Ya hay otro");
 			}
 			
-		} else {
-			throw new Error ("No se puede colocar el barco. Ya hay otro");
+		} catch (ArrayIndexOutOfBoundsException exception) {
+			
 		}
 	}
 

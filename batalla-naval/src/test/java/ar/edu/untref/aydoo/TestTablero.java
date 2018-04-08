@@ -32,9 +32,9 @@ public class TestTablero {
 	
 	@Test
 	public void alColocarUnBarcoDeTamanio2DeberiaEstarEnDichoLugar() {
-		Barco unBarco = new Barco(2, 'H');
+		Barco unCruzero = new Barco(2, 'H');
 		
-		tablero.colocarBarco(2, 1, unBarco);
+		tablero.colocarBarco(2, 1, unCruzero);
 		
 		Assert.assertFalse(tablero.noHayBarcoEnCasillero(2, 1));
 		Assert.assertFalse(tablero.noHayBarcoEnCasillero(2, 2));
@@ -42,9 +42,9 @@ public class TestTablero {
 	
 	@Test
 	public void deberiaColocarseUnBarcoEnPosicionVertical() {
-		Barco unBarco = new Barco(2, 'V');
+		Barco unCruzero = new Barco(2, 'V');
 		
-		tablero.colocarBarco(4, 2, unBarco);
+		tablero.colocarBarco(4, 2, unCruzero);
 		
 		Assert.assertFalse(tablero.noHayBarcoEnCasillero(4, 2));
 		Assert.assertFalse(tablero.noHayBarcoEnCasillero(5, 2));
@@ -101,12 +101,28 @@ public class TestTablero {
 	
 	@Test (expected = Error.class)
 	public void alColocarUnCruzeroNoDeberiaColocarseOtro() {
-		Barco unCruzero = new Barco(1, 'V');
-		Barco otroCruzero = new Barco(1, 'H');
+		Barco unCruzero = new Barco(2, 'V');
+		Barco otroCruzero = new Barco(2, 'H');
 		
 		tablero.colocarBarco(3, 1, unCruzero);
-		tablero.colocarBarco(3, 1, otroCruzero);
+		tablero.colocarBarco(4, 1, otroCruzero);
 		
 		Assert.assertEquals(unCruzero, tablero.obtenerCasillero(3, 1).obtenerBarco());
+	}
+	
+	@Test
+	public void noDeberiaPoderColocarseUnBarcoFueraDeLosLimitesDelTablero() {
+		Barco unCruzero = new Barco(2, 'H');
+		
+		tablero.colocarBarco(3, 10, unCruzero);
+	}
+	
+	@Test (expected = Error.class)
+	public void noDeberiaPoderColocarseUnBarcoQueEsteEnParteDentroDelTableroYEnParteNo() {
+		Barco unCruzero = new Barco(2, 'H');
+		
+		tablero.colocarBarco(3, 9, unCruzero);
+		
+		Assert.assertTrue(tablero.obtenerCasillero(3, 9).estaVacio());
 	}
 }
