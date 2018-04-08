@@ -29,5 +29,4 @@ public class Barco {
 	public boolean estaHundido() {
 		return this.parteDaniada == this.tamanio;
 	}
-	
 }

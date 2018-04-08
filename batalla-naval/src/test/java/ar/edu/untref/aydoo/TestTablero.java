@@ -125,4 +125,13 @@ public class TestTablero {
 		
 		Assert.assertTrue(tablero.obtenerCasillero(3, 9).estaVacio());
 	}
+	
+	@Test
+	public void deberiaPoderColocarseUnBoteEnAlgunExtremoDelTablero() {
+		Barco unBote = new Barco(1, 'V');
+		
+		tablero.colocarBarco(9, 1, unBote);
+		
+		Assert.assertFalse(tablero.noHayBarcoEnCasillero(9, 1));
+	}
 }

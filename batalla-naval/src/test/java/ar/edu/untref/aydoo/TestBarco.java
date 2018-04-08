@@ -3,7 +3,6 @@ package ar.edu.untref.aydoo;
 import org.junit.Assert;
 import org.junit.Test;
 
-
 public class TestBarco {
 	
 	@Test
@@ -16,27 +15,29 @@ public class TestBarco {
 	
 	@Test
 	public void alTocarBarcoDeTamanio1DeberiaEstarHundido() {
-		Barco barco = new Barco(1, 'V');
-		barco.tocado();
+		Barco bote = new Barco(1, 'V');
+
+		bote.tocado();
 		
-		Assert.assertTrue(barco.estaHundido());
+		Assert.assertTrue(bote.estaHundido());
 	}
 	
 	@Test
 	public void barcoDeTamanioDosNoEstaHundidoSiSeLoTocaUnaVez() {
-		Barco barco = new Barco(2, 'H');
-		barco.tocado();
+		Barco cruzero = new Barco(2, 'H');
 		
-		Assert.assertFalse(barco.estaHundido());
+		cruzero.tocado();
+		
+		Assert.assertFalse(cruzero.estaHundido());
 	}
 	
 	@Test
 	public void barcoDeberiaPoderTocarseMasVecesDeLasDeSuTamanioSinCambiarEstado() {
 		Barco barco = new Barco(1, 'H');
+		
 		barco.tocado();
 		barco.tocado();
 		
 		Assert.assertTrue(barco.estaHundido());
 	}
-
 }
