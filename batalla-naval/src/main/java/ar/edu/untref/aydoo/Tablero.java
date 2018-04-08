@@ -45,6 +45,8 @@ public class Tablero {
 	}
 
 	public void atacar(int fila, int columna) {
-		this.casilleros[fila][columna].obtenerBarco().tocado();
+		if (!this.casilleros[fila][columna].estaVacio()) {
+			this.casilleros[fila][columna].obtenerBarco().tocado();
+		}
 	}
 }

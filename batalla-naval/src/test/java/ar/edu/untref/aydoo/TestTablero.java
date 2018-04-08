@@ -80,4 +80,11 @@ public class TestTablero {
 		
 		Assert.assertTrue(barco.estaHundido());
 	}
+	
+	@Test
+	public void atacarUnCasilleroVacioDeberiaDevolvermeAgua() {
+		tablero.atacar(2, 1);
+		
+		Assert.assertTrue(tablero.noHayBarcoEnCasillero(2, 1));
+	}
 }
