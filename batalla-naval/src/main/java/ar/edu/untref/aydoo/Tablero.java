@@ -29,18 +29,23 @@ public class Tablero {
 	}
 
 	public void colocarBarco(int fila, int columna, Barco barco) {
-		if (barco.obtenerTamanio() == 2) {
-			if (barco.obtenerOrientacion() == 'H') {
-				this.casilleros[fila][columna].ponerBarco(barco);
-				this.casilleros[fila][columna + 1].ponerBarco(barco);
+		if (this.casilleros[fila][columna].estaVacio()) {
+			if (barco.obtenerTamanio() == 2) {
+				if (barco.obtenerOrientacion() == 'H') {
+					this.casilleros[fila][columna].ponerBarco(barco);
+					this.casilleros[fila][columna + 1].ponerBarco(barco);
+					
+				} else {
+					this.casilleros[fila][columna].ponerBarco(barco);
+					this.casilleros[fila + 1][columna].ponerBarco(barco);
+				}
 				
 			} else {
 				this.casilleros[fila][columna].ponerBarco(barco);
-				this.casilleros[fila + 1][columna].ponerBarco(barco);
 			}
 			
 		} else {
-			this.casilleros[fila][columna].ponerBarco(barco);
+			throw new Error ("No se puede colocar el barco. Ya hay otro");
 		}
 	}
 
@@ -48,5 +53,9 @@ public class Tablero {
 		if (!this.casilleros[fila][columna].estaVacio()) {
 			this.casilleros[fila][columna].obtenerBarco().tocado();
 		}
+	}
+
+	public Casillero obtenerCasillero(int fila, int columna) {
+		return this.casilleros[fila][columna];
 	}
 }

@@ -87,4 +87,16 @@ public class TestTablero {
 		
 		Assert.assertTrue(tablero.noHayBarcoEnCasillero(2, 1));
 	}
+	
+	@Test (expected = Error.class)
+	public void alColocarUnBarcoNoDeberiaColocarseOtroEnElMismoLugar() {
+		Barco unBarco = new Barco(1, 'V');
+		Barco otroBarco = new Barco(1, 'H');
+		
+		tablero.colocarBarco(3, 1, unBarco);
+		tablero.colocarBarco(3, 1, otroBarco);
+		
+		Assert.assertEquals(unBarco, tablero.obtenerCasillero(3, 1).obtenerBarco());
+	}
+	
 }
