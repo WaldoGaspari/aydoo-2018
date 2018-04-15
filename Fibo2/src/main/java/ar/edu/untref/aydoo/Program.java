@@ -4,7 +4,7 @@ public class Program {
 
     public static final void main(final String[] arg) {
 	    String formato = String.valueOf(arg[0]);
-	    //char orientacion = formato.charAt(3);
+	    char orientacion = formato.charAt(3);
 	    char direccion = formato.charAt(4);
     	int numero = Integer.parseInt(arg[1]);
 	    int[] resultado = new int[numero];
@@ -17,8 +17,17 @@ public class Program {
 	    }
 	    
 	    System.out.printf("fibo<%d>: ", numero);
-	    for (int i = 0; i < numero; i++) {	
-	    	System.out.printf("%d ", resultado[i]);
+	    
+	    if (orientacion == 'v') {
+	    	System.out.printf("\r\n");
+	    	for (int i = 0; i < numero; i++) {	
+		    	System.out.printf("%d \r\n", resultado[i]);
+		    }
+	    	
+	    } else {
+	    	for (int i = 0; i < numero; i++) {	
+		    	System.out.printf("%d ", resultado[i]);
+		    }
 	    }
     }
     
