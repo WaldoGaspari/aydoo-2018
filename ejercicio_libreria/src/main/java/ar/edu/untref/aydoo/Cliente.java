@@ -6,4 +6,9 @@ public class Cliente {
 		// TODO Auto-generated constructor stub
 	}
 
+	public void agregarProducto(Producto producto) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
