@@ -1,32 +1,28 @@
 package ar.edu.untref.aydoo;
 
-import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Cliente {
 
 	private String nombre;
 	private String apellido;
 	private String direccion;
-	private HashMap<Mes, Producto> productosComprados;
+	private List<Compra> comprasRealizadas;
 	
 	public Cliente(String nombre, String apellido, String direccion) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.direccion = direccion;
-		this.productosComprados = new HashMap<Mes, Producto>();
+		this.comprasRealizadas = new LinkedList<Compra>();
 	}
 
-	public void agregarProducto(Producto producto, Mes mes) {
-		this.productosComprados.put(mes, producto);
+	public void agregarCompra(Compra nuevaCompra) {
+		this.comprasRealizadas.add(nuevaCompra);
 	}
-
-	public double obtenerProductosPorMes(Mes mes) {
-		if (this.productosComprados.get(mes) != null) {
-			return this.productosComprados.get(mes).obtenerPrecio();
-			
-		} else {
-			return 0;
-		}
+	
+	public List<Compra> obtenerComprasRealizadas() {
+		return this.comprasRealizadas;
 	}
 
 }
