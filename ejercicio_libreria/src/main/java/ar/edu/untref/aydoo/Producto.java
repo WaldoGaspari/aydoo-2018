@@ -11,5 +11,9 @@ public class Producto {
 	public double obtenerPrecio() {
 		return this.precio;
 	}
+	
+	public void cambiarPrecio(double nuevoPrecio){
+		this.precio = nuevoPrecio;
+	}
 
 }

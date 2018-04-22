@@ -83,4 +83,20 @@ public class LibreriaTest {
 		
 		Assert.assertEquals(61.75, resultado, 0.0);
 	}
+	
+	@Test
+	public void calcularMontoACobrarDeUnClienteQueComproArticulosDeLibreriaEnElMesDeEneroDeberiaDar() {
+		Libreria libreria = new Libreria();
+		Cliente josefina = new Cliente("Josefina", "Marquez", "3 de Febrero 6732");
+		ArticuloDeLibreria marcadorPermanente = new ArticuloDeLibreria(38.0);
+		ArticuloDeLibreria papelGlase = new ArticuloDeLibreria(15.0);
+		Compra unaCompraDeEnero = new Compra(josefina, Mes.ENERO);
+		
+		unaCompraDeEnero.agregarProductoALaCompra(marcadorPermanente);
+		unaCompraDeEnero.agregarProductoALaCompra(papelGlase);
+		josefina.agregarCompra(unaCompraDeEnero);
+		double resultado = libreria.calcularCobroDeUnClientPorMes(Mes.ENERO, josefina);
+		
+		Assert.assertEquals(64.13, resultado, 0.0);
+	}
 }
