@@ -27,11 +27,22 @@ public class Libreria {
 			while(iterador.hasNext()) {
 				Compra compra = iterador.next();
 				if (compra.obtenerMesDeLaCompra() == mes) {
-					resultado = resultado + compra.obtenerTotalDeLaCompra();
+					if (this.clientes.contains(cliente)) {
+						resultado = resultado + realizarDescuentoParaClienteRegistrado(compra);
+						
+					} else {
+						resultado = resultado + compra.obtenerTotalDeLaCompra();
+					}
 				}
 			}
 			return resultado;
 		}
+	}
+	
+	private double realizarDescuentoParaClienteRegistrado(Compra compra) {
+		double totalConDescuento = 0;
+		totalConDescuento = compra.obtenerTotalDeLaCompra() - ((compra.obtenerTotalDeLaCompra() * 5) / 100);
+		return totalConDescuento;
 	}
 	
 }
