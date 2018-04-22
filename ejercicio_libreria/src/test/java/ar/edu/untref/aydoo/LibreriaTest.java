@@ -1,6 +1,7 @@
 package ar.edu.untref.aydoo;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class LibreriaTest {
@@ -85,7 +86,7 @@ public class LibreriaTest {
 	}
 	
 	@Test
-	public void calcularMontoACobrarDeUnClienteQueComproArticulosDeLibreriaEnElMesDeEneroDeberiaDar() {
+	public void calcularMontoACobrarDeUnClienteQueComproArticulosDeLibreriaEnElMesDeEneroDeberiaDar64Con13() {
 		Libreria libreria = new Libreria();
 		Cliente josefina = new Cliente("Josefina", "Marquez", "3 de Febrero 6732");
 		ArticuloDeLibreria marcadorPermanente = new ArticuloDeLibreria(38.0);
@@ -98,5 +99,41 @@ public class LibreriaTest {
 		double resultado = libreria.calcularCobroDeUnClientPorMes(Mes.ENERO, josefina);
 		
 		Assert.assertEquals(64.13, resultado, 0.0);
+	}
+	
+	@Ignore
+	@Test
+	public void calcularMontoACobrarDeUnClienteQueComproUnDiarioYUnaRevistaEnElMesDeMarzoDeberiaDar60() {
+		Libreria libreria = new Libreria();
+		Cliente martin = new Cliente("Martin", "Cavallaro", "Juan B Justo 8154");
+		Publicacion diarioLaNacion = new Publicacion(25.0);
+		Publicacion revistaGranPesca = new Publicacion(35.0);
+		Compra unaCompraDeMarzo = new Compra(martin, Mes.MARZO);
+		
+		unaCompraDeMarzo.agregarProductoALaCompra(diarioLaNacion);
+		unaCompraDeMarzo.agregarProductoALaCompra(revistaGranPesca);
+		martin.agregarCompra(unaCompraDeMarzo);
+		double resultado = libreria.calcularCobroDeUnClientPorMes(Mes.MARZO, martin);
+		
+		Assert.assertEquals(60.0, resultado, 0.0);
+	}
+	
+	@Ignore
+	@Test
+	public void calcularMontoACobrarDeUnClienteQuePoseeUnaSuscripcionAnualDeberiaDar76() {
+		Libreria libreria = new Libreria();
+		Cliente eduardo = new Cliente("Eduardo", "Pallares", "Mitre 3311");
+		Publicacion diarioCronica = new Publicacion(20.0);
+		Publicacion revistaTodoMotor = new Publicacion(70.0);
+		Suscripcion suscripcion = new Suscripcion(revistaTodoMotor);
+		Compra unaCompraDeEnero = new Compra(eduardo, Mes.ENERO);
+		
+		unaCompraDeEnero.agregarProductoALaCompra(diarioCronica);
+		unaCompraDeEnero.agregarProductoALaCompra(revistaTodoMotor);
+		eduardo.agregarCompra(unaCompraDeEnero);
+		eduardo.agregarSuscripcion(suscripcion);
+		double resultado = libreria.calcularCobroDeUnClientPorMes(Mes.ENERO, eduardo);
+		
+		Assert.assertEquals(76.0, resultado, 0.0);
 	}
 }

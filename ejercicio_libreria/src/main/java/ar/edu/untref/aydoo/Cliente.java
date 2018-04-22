@@ -25,4 +25,9 @@ public class Cliente {
 		return this.comprasRealizadas;
 	}
 
+	public void agregarSuscripcion(Suscripcion suscripcion) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
