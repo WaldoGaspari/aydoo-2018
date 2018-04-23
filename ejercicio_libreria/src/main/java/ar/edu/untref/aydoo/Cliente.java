@@ -28,7 +28,6 @@ public class Cliente {
 	}
 
 	public void agregarSuscripcion(Suscripcion suscripcion) {
-		suscripcion.calcularSuscripcionAnual();
 		this.suscripcionesAdheridas.add(suscripcion);
 	}
 
