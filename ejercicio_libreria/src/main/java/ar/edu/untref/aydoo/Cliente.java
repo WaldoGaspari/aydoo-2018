@@ -9,12 +9,14 @@ public class Cliente {
 	private String apellido;
 	private String direccion;
 	private List<Compra> comprasRealizadas;
+	private List<Suscripcion> suscripcionesAdheridas;
 	
 	public Cliente(String nombre, String apellido, String direccion) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.direccion = direccion;
 		this.comprasRealizadas = new LinkedList<Compra>();
+		this.suscripcionesAdheridas = new LinkedList<Suscripcion>();
 	}
 
 	public void agregarCompra(Compra nuevaCompra) {
@@ -26,8 +28,8 @@ public class Cliente {
 	}
 
 	public void agregarSuscripcion(Suscripcion suscripcion) {
-		// TODO Auto-generated method stub
-		
+		suscripcion.calcularSuscripcionAnual();
+		this.suscripcionesAdheridas.add(suscripcion);
 	}
 
 }

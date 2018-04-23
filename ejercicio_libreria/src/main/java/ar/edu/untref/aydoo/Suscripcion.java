@@ -15,5 +15,9 @@ public class Suscripcion {
 			this.publicacion.cambiarPrecio(resultado);
 		}
 	}
+	
+	public Publicacion obtenerPublicacion() {
+		return this.publicacion;
+	}
 
 }
