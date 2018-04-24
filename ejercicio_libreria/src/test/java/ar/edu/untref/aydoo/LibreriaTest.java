@@ -173,7 +173,7 @@ public class LibreriaTest {
 	}
 	
 	@Test
-	public void calcularMontoACobrarDeUnClienteRegistradoEnUnAñoDeberiaDar479Con25() {
+	public void calcularMontoACobrarDeUnClienteRegistradoEnUnAñoDeberiaDar416Con05() {
 		Libreria libreria = new Libreria();
 		Cliente maximiliano = new Cliente("Maximiliano", "Juarez", "Cochabamba 5186");
 		ArticuloDeLibreria correctorLiquido = new ArticuloDeLibreria(50.0);
@@ -203,5 +203,24 @@ public class LibreriaTest {
 		double resultado = libreria.calcularCobroDeUnClientePorAño(maximiliano);
 		
 		Assert.assertEquals(416.05, resultado, 0.0025);
+	}
+	
+	@Test
+	public void calcularMontoACobrarDeUnClienteRegistradoQuePoseeUnaSuscripcionAnualNoDeberiaAplicarseElDescuentoDe5PorcentajeEnSusCompras() {
+		Libreria libreria = new Libreria();
+		Cliente natalia = new Cliente("Natalia", "Villalba", "Honduras 2977");
+		Publicacion diarioLaNacion = new Publicacion(25.0, Periodicidad.DIARIA);
+		Publicacion revistaTodoModa = new Publicacion(95.0, Periodicidad.ANUAL);
+		Suscripcion suscripcion = new Suscripcion(revistaTodoModa);
+		Compra unaCompraDeEnero = new Compra(natalia, Mes.ENERO);
+		
+		unaCompraDeEnero.agregarProductoALaCompra(diarioLaNacion);
+		unaCompraDeEnero.agregarProductoALaCompra(revistaTodoModa);
+		natalia.agregarCompra(unaCompraDeEnero);
+		natalia.agregarSuscripcion(suscripcion);
+		libreria.agregarCliente(natalia);
+		double resultado = libreria.calcularCobroDeUnClientePorMes(Mes.ENERO, natalia);
+		
+		Assert.assertEquals(101.0, resultado, 0.0);
 	}
 }

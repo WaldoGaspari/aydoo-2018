@@ -30,5 +30,9 @@ public class Cliente {
 	public void agregarSuscripcion(Suscripcion suscripcion) {
 		this.suscripcionesAdheridas.add(suscripcion);
 	}
+	
+	public List<Suscripcion> obtenerSuscripciones() {
+		return this.suscripcionesAdheridas;
+	}
 
 }

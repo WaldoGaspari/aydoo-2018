@@ -27,7 +27,7 @@ public class Libreria {
 			while(iterador.hasNext()) {
 				Compra compra = iterador.next();
 				if (compra.obtenerMesDeLaCompra() == mes) {
-					if (this.clientes.contains(cliente)) {
+					if (this.clientes.contains(cliente) && !saberSiElClientePoseeUnaSuscripcionAnual(cliente)) {
 						resultado = resultado + realizarDescuentoParaClienteRegistrado(compra);
 						
 					} else {
@@ -52,5 +52,17 @@ public class Libreria {
 			resultado = resultado + calcularCobroDeUnClientePorMes(meses[i], cliente);
 		}
 		return resultado;
+	}
+	
+	private boolean saberSiElClientePoseeUnaSuscripcionAnual(Cliente cliente) {
+		boolean tieneUnaSuscripcionAnual = false;
+		Iterator<Suscripcion> iterador = cliente.obtenerSuscripciones().iterator();
+		while (iterador.hasNext()) {
+			Suscripcion suscripcion = iterador.next();
+			if (suscripcion.obtenerPublicacion().obtenerPeriodicidad() == Periodicidad.ANUAL) {
+				tieneUnaSuscripcionAnual = true;
+			}
+		}
+		return tieneUnaSuscripcionAnual;
 	}
 }
