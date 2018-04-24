@@ -10,7 +10,7 @@ public class LibreriaTest {
 		Libreria libreria = new Libreria();
 		Cliente pedro = new Cliente("Pedro", "Suarez", "Rosas 1840");
 		
-		double resultado = libreria.calcularCobroDeUnClientPorMes(Mes.FEBRERO, pedro);
+		double resultado = libreria.calcularCobroDeUnClientePorMes(Mes.FEBRERO, pedro);
 		
 		Assert.assertEquals(0.0, resultado, 0.0);
 	}
@@ -24,7 +24,7 @@ public class LibreriaTest {
 		
 		compra.agregarProductoALaCompra(lapicera);
 		pedro.agregarCompra(compra);
-		double resultado = libreria.calcularCobroDeUnClientPorMes(Mes.FEBRERO, pedro);
+		double resultado = libreria.calcularCobroDeUnClientePorMes(Mes.FEBRERO, pedro);
 		
 		Assert.assertEquals(10.0, resultado, 0.0);
 	}
@@ -42,7 +42,7 @@ public class LibreriaTest {
 		compra.agregarProductoALaCompra(goma);
 		compra.agregarProductoALaCompra(carpeta);
 		lucas.agregarCompra(compra);
-		double resultado = libreria.calcularCobroDeUnClientPorMes(Mes.MARZO, lucas);
+		double resultado = libreria.calcularCobroDeUnClientePorMes(Mes.MARZO, lucas);
 		
 		Assert.assertEquals(80.0, resultado, 0.0);
 	}
@@ -62,7 +62,7 @@ public class LibreriaTest {
 		unaCompraDeNoviembre.agregarProductoALaCompra(carpeta);
 		juan.agregarCompra(unaCompraDeOctubre);
 		juan.agregarCompra(unaCompraDeNoviembre);
-		double resultado = libreria.calcularCobroDeUnClientPorMes(Mes.OCTUBRE, juan);
+		double resultado = libreria.calcularCobroDeUnClientePorMes(Mes.OCTUBRE, juan);
 		
 		Assert.assertEquals(50.0, resultado, 0.0);
 	}
@@ -79,7 +79,7 @@ public class LibreriaTest {
 		unaCompraDeMayo.agregarProductoALaCompra(voligoma);
 		agustina.agregarCompra(unaCompraDeMayo);
 		libreria.agregarCliente(agustina);
-		double resultado = libreria.calcularCobroDeUnClientPorMes(Mes.MAYO, agustina);
+		double resultado = libreria.calcularCobroDeUnClientePorMes(Mes.MAYO, agustina);
 		
 		Assert.assertEquals(61.75, resultado, 0.0);
 	}
@@ -95,7 +95,7 @@ public class LibreriaTest {
 		unaCompraDeEnero.agregarProductoALaCompra(marcadorPermanente);
 		unaCompraDeEnero.agregarProductoALaCompra(papelGlase);
 		josefina.agregarCompra(unaCompraDeEnero);
-		double resultado = libreria.calcularCobroDeUnClientPorMes(Mes.ENERO, josefina);
+		double resultado = libreria.calcularCobroDeUnClientePorMes(Mes.ENERO, josefina);
 		
 		Assert.assertEquals(64.13, resultado, 0.0);
 	}
@@ -111,7 +111,7 @@ public class LibreriaTest {
 		unaCompraDeMarzo.agregarProductoALaCompra(diarioLaNacion);
 		unaCompraDeMarzo.agregarProductoALaCompra(revistaGranPesca);
 		martin.agregarCompra(unaCompraDeMarzo);
-		double resultado = libreria.calcularCobroDeUnClientPorMes(Mes.MARZO, martin);
+		double resultado = libreria.calcularCobroDeUnClientePorMes(Mes.MARZO, martin);
 		
 		Assert.assertEquals(60.0, resultado, 0.0);
 	}
@@ -129,8 +129,46 @@ public class LibreriaTest {
 		unaCompraDeEnero.agregarProductoALaCompra(revistaTodoMotor);
 		eduardo.agregarCompra(unaCompraDeEnero);
 		eduardo.agregarSuscripcion(suscripcion);
-		double resultado = libreria.calcularCobroDeUnClientPorMes(Mes.ENERO, eduardo);
+		double resultado = libreria.calcularCobroDeUnClientePorMes(Mes.ENERO, eduardo);
 		
 		Assert.assertEquals(76.0, resultado, 0.0);
+	}
+	
+	@Test
+	public void calcularMontoACobrarDeUnClienteNoRegistradoQueNoComproNadaDeberiaDar0() {
+		Libreria libreria = new Libreria();
+		Cliente mauro = new Cliente("Mauro", "Suarez", "Solis 3333");
+		
+		double resultado = libreria.calcularCobroDeUnClientePorAño(mauro);
+		
+		Assert.assertEquals(0.0, resultado, 0.0);
+	}
+	
+	@Test
+	public void calcularMontoACobrarDeUnClienteNoRegistradoEnUnAñoDeberiaDar479Con25() {
+		Libreria libreria = new Libreria();
+		Cliente vanesa = new Cliente("Vanesa", "Magallanes", "Alberdi 1190");
+		ArticuloDeLibreria fibrasx12 = new ArticuloDeLibreria(57.0);
+		ArticuloDeLibreria crayonesx12 = new ArticuloDeLibreria(43.0);
+		ArticuloDeLibreria hojasCansonNro5 = new ArticuloDeLibreria(25.0);
+		Publicacion diarioClarin = new Publicacion(27.0, Periodicidad.DIARIA);
+		Publicacion revistaHolaArgentina = new Publicacion(55.0, Periodicidad.MENSUAL);
+		Producto cajaFuerte = new Producto(246.0);
+		Compra compraDeMarzo = new Compra(vanesa, Mes.MARZO);
+		Compra compraDeJunio = new Compra(vanesa, Mes.JUNIO);
+		Compra compraDeSeptiembre = new Compra(vanesa, Mes.SEPTIEMBRE);
+		
+		compraDeMarzo.agregarProductoALaCompra(fibrasx12);
+		compraDeMarzo.agregarProductoALaCompra(crayonesx12);
+		compraDeMarzo.agregarProductoALaCompra(hojasCansonNro5);
+		compraDeJunio.agregarProductoALaCompra(diarioClarin);
+		compraDeJunio.agregarProductoALaCompra(revistaHolaArgentina);
+		compraDeSeptiembre.agregarProductoALaCompra(cajaFuerte);
+		vanesa.agregarCompra(compraDeMarzo);
+		vanesa.agregarCompra(compraDeJunio);
+		vanesa.agregarCompra(compraDeSeptiembre);
+		double resultado = libreria.calcularCobroDeUnClientePorAño(vanesa);
+		
+		Assert.assertEquals(479.25, resultado, 0.0);
 	}
 }

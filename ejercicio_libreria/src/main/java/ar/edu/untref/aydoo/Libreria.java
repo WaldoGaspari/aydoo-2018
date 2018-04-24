@@ -16,7 +16,7 @@ public class Libreria {
 		this.clientes.add(nuevoCliente);
 	}
 
-	public double calcularCobroDeUnClientPorMes(Mes mes, Cliente cliente) {
+	public double calcularCobroDeUnClientePorMes(Mes mes, Cliente cliente) {
 		double resultado = 0;
 		if (cliente.obtenerComprasRealizadas().isEmpty()) {
 			return resultado;
@@ -44,5 +44,13 @@ public class Libreria {
 		totalConDescuento = compra.obtenerTotalDeLaCompra() - ((compra.obtenerTotalDeLaCompra() * 5) / 100);
 		return totalConDescuento;
 	}
-	
+
+	public double calcularCobroDeUnClientePorAño(Cliente cliente) {
+		double resultado = 0;
+		Mes[] meses = Mes.values();
+		for (int i = 0; i < meses.length; i++) {
+			resultado = resultado + calcularCobroDeUnClientePorMes(meses[i], cliente);
+		}
+		return resultado;
+	}
 }
