@@ -171,4 +171,37 @@ public class LibreriaTest {
 		
 		Assert.assertEquals(479.25, resultado, 0.0);
 	}
+	
+	@Test
+	public void calcularMontoACobrarDeUnClienteRegistradoEnUnAñoDeberiaDar479Con25() {
+		Libreria libreria = new Libreria();
+		Cliente maximiliano = new Cliente("Maximiliano", "Juarez", "Cochabamba 5186");
+		ArticuloDeLibreria correctorLiquido = new ArticuloDeLibreria(50.0);
+		ArticuloDeLibreria biromeAzul = new ArticuloDeLibreria(10.0);
+		Publicacion diarioPopular = new Publicacion(22.0, Periodicidad.DIARIA);
+		Publicacion revistaHolaArgentina = new Publicacion(55.0, Periodicidad.MENSUAL);
+		Producto cajaFuerte = new Producto(246.0);
+		ArticuloDeLibreria goma = new ArticuloDeLibreria(10.0);
+		ArticuloDeLibreria lapiz = new ArticuloDeLibreria(25.0);
+		Compra compraDeMarzo = new Compra(maximiliano, Mes.MARZO);
+		Compra compraDeJulio = new Compra(maximiliano, Mes.JULIO);
+		Compra compraDeSeptiembre = new Compra(maximiliano, Mes.SEPTIEMBRE);
+		Compra compraDeOctubre = new Compra(maximiliano, Mes.OCTUBRE);
+		
+		compraDeMarzo.agregarProductoALaCompra(correctorLiquido);
+		compraDeMarzo.agregarProductoALaCompra(biromeAzul);
+		compraDeJulio.agregarProductoALaCompra(diarioPopular);
+		compraDeJulio.agregarProductoALaCompra(revistaHolaArgentina);
+		compraDeSeptiembre.agregarProductoALaCompra(cajaFuerte);
+		compraDeOctubre.agregarProductoALaCompra(goma);
+		compraDeOctubre.agregarProductoALaCompra(lapiz);
+		maximiliano.agregarCompra(compraDeMarzo);
+		maximiliano.agregarCompra(compraDeJulio);
+		maximiliano.agregarCompra(compraDeSeptiembre);
+		maximiliano.agregarCompra(compraDeOctubre);
+		libreria.agregarCliente(maximiliano);
+		double resultado = libreria.calcularCobroDeUnClientePorAño(maximiliano);
+		
+		Assert.assertEquals(416.05, resultado, 0.0025);
+	}
 }
