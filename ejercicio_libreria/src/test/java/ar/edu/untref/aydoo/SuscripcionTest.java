@@ -1,7 +1,6 @@
 package ar.edu.untref.aydoo;
 
 import org.junit.Test;
-
 import org.junit.Assert;
 
 public class SuscripcionTest {
@@ -21,5 +20,4 @@ public class SuscripcionTest {
 		
 		Assert.assertEquals(108, revistaHolaMundo.obtenerPrecio(), 0.0);
 	}
-
 }

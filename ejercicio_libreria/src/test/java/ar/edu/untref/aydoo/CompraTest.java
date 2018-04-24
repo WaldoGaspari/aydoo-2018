@@ -7,16 +7,14 @@ public class CompraTest {
 	
 	@Test
 	public void unaCompraSinProductosDeberiaDevolvermeCero() {
-		Cliente juan = new Cliente("Juan", "Garcia", "Rosas 1200");
-		Compra nuevaCompra = new Compra(juan, Mes.AGOSTO);
+		Compra nuevaCompra = new Compra(Mes.AGOSTO);
 		
 		Assert.assertEquals(0, nuevaCompra.obtenerTotalDeLaCompra(), 0.0);
 	}
 	
 	@Test
 	public void unaCompraDeTresProductosDeberiaDevolverme120() {
-		Cliente juan = new Cliente("Juan", "Garcia", "Rosas 1200");
-		Compra nuevaCompra = new Compra(juan, Mes.AGOSTO);
+		Compra nuevaCompra = new Compra(Mes.AGOSTO);
 		Producto revista = new Producto(30.0);
 		Producto cartuchera = new Producto(70.0);
 		Producto diario = new Producto(20.0);
@@ -27,5 +25,4 @@ public class CompraTest {
 		
 		Assert.assertEquals(120, nuevaCompra.obtenerTotalDeLaCompra(), 0.0);
 	}
-
 }

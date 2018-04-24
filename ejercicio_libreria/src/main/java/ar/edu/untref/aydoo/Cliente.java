@@ -34,5 +34,4 @@ public class Cliente {
 	public List<Suscripcion> obtenerSuscripciones() {
 		return this.suscripcionesAdheridas;
 	}
-
 }

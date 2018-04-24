@@ -12,5 +12,4 @@ public class ArticuloDeLibreria extends Producto {
 	private double calcularIVA(double precio) {
 		return this.obtenerPrecio() * this.IVA;
 	}
-
 }

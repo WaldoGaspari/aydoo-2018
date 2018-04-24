@@ -12,5 +12,4 @@ public class Publicacion extends Producto {
 	public Periodicidad obtenerPeriodicidad() {
 		return this.periodicidad;
 	}
-
 }

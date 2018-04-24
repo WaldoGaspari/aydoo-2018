@@ -6,12 +6,10 @@ import java.util.List;
 
 public class Compra {
 	
-	private Cliente cliente;
 	private Mes mes;
 	private List<Producto> productos;
 	
-	public Compra(Cliente cliente, Mes mes) {
-		this.cliente = cliente;
+	public Compra(Mes mes) {
 		this.mes = mes;
 		this.productos = new LinkedList<Producto>();
 	}
@@ -35,7 +33,7 @@ public class Compra {
 			
 		}else {
 			Iterator<Producto> iterador = this.productos.iterator();
-			while(iterador.hasNext()) {
+			while (iterador.hasNext()) {
 				Producto producto = iterador.next();
 				resultado = resultado + producto.obtenerPrecio();
 			}

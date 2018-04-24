@@ -24,7 +24,7 @@ public class Libreria {
 		} else {
 			List<Compra> comprasDelCliente = cliente.obtenerComprasRealizadas();
 			Iterator<Compra> iterador = comprasDelCliente.iterator();
-			while(iterador.hasNext()) {
+			while (iterador.hasNext()) {
 				Compra compra = iterador.next();
 				if (compra.obtenerMesDeLaCompra() == mes) {
 					if (this.clientes.contains(cliente) && !saberSiElClientePoseeUnaSuscripcionAnual(cliente)) {

@@ -12,8 +12,7 @@ public class Producto {
 		return this.precio;
 	}
 	
-	public void cambiarPrecio(double nuevoPrecio){
+	public void cambiarPrecio(double nuevoPrecio) {
 		this.precio = nuevoPrecio;
 	}
-
 }

@@ -20,5 +20,4 @@ public class Suscripcion {
 	public Publicacion obtenerPublicacion() {
 		return this.publicacion;
 	}
-
 }
