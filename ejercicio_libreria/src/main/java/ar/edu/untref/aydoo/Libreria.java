@@ -39,12 +39,6 @@ public class Libreria {
 		}
 	}
 	
-	private double realizarDescuentoParaClienteRegistrado(Compra compra) {
-		double totalConDescuento = 0;
-		totalConDescuento = compra.obtenerTotalDeLaCompra() - ((compra.obtenerTotalDeLaCompra() * 5) / 100);
-		return totalConDescuento;
-	}
-
 	public double calcularCobroDeUnClientePorAño(Cliente cliente) {
 		double resultado = 0;
 		Mes[] meses = Mes.values();
@@ -52,6 +46,12 @@ public class Libreria {
 			resultado = resultado + calcularCobroDeUnClientePorMes(meses[i], cliente);
 		}
 		return resultado;
+	}
+	
+	private double realizarDescuentoParaClienteRegistrado(Compra compra) {
+		double totalConDescuento = 0;
+		totalConDescuento = compra.obtenerTotalDeLaCompra() - ((compra.obtenerTotalDeLaCompra() * 5) / 100);
+		return totalConDescuento;
 	}
 	
 	private boolean saberSiElClientePoseeUnaSuscripcionAnual(Cliente cliente) {
@@ -64,5 +64,17 @@ public class Libreria {
 			}
 		}
 		return tieneUnaSuscripcionAnual;
+	}
+
+	public double calcularTotalACobrarDeLosClientesRegistradosPorMes(Mes mes) {
+		double totalPorMes = 0;
+		if (!this.clientes.isEmpty()) {
+			Iterator<Cliente> iterador = this.clientes.iterator();
+			while (iterador.hasNext()) {
+				Cliente cliente = iterador.next();
+				totalPorMes = totalPorMes + calcularCobroDeUnClientePorMes(mes,cliente);
+			}
+		}
+		return totalPorMes;
 	}
 }

@@ -218,4 +218,30 @@ public class LibreriaTest {
 		
 		Assert.assertEquals(101.0, resultado, 0.0);
 	}
+	
+	@Test
+	public void calcularImporteTotalACobrarDeTodosLosClientesRegistradosParaMarzoDeberiaDar() {
+		Cliente agustina = new Cliente("Agustina", "Soto", "Magaldi 5512");
+		Cliente natalia = new Cliente("Natalia", "Villalba", "Honduras 2977");
+		Producto plasticola = new Producto(40.0);
+		Producto voligoma = new Producto(25.0);
+		Publicacion diarioLaNacion = new Publicacion(25.0, Periodicidad.DIARIA);
+		Publicacion revistaTodoModa = new Publicacion(95.0, Periodicidad.ANUAL);
+		Suscripcion suscripcion = new Suscripcion(revistaTodoModa);
+		Compra unaCompraDeMarzoDeNatalia = new Compra(Mes.MARZO);
+		Compra unaCompraDeMarzoDeAgustina = new Compra(Mes.MARZO);
+		
+		unaCompraDeMarzoDeAgustina.agregarProductoALaCompra(plasticola);
+		unaCompraDeMarzoDeAgustina.agregarProductoALaCompra(voligoma);
+		unaCompraDeMarzoDeNatalia.agregarProductoALaCompra(diarioLaNacion);
+		unaCompraDeMarzoDeNatalia.agregarProductoALaCompra(revistaTodoModa);
+		agustina.agregarCompra(unaCompraDeMarzoDeAgustina);
+		natalia.agregarCompra(unaCompraDeMarzoDeNatalia);
+		natalia.agregarSuscripcion(suscripcion);
+		libreria.agregarCliente(natalia);
+		libreria.agregarCliente(agustina);
+		double resultado = libreria.calcularTotalACobrarDeLosClientesRegistradosPorMes(Mes.MARZO);
+		
+		Assert.assertEquals(162.75, resultado, 0.0);
+	}
 }
