@@ -3,38 +3,42 @@ package ar.edu.untref.aydoo;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.PrintWriter;
 
 public class Program {
 
 	private static int numero;
 	private static int[] resultado;
+	private static String formato;
+	private static char orientacion;
+	private static char direccion;
 	
     public static final void main(final String[] arg) {
-    	if (arg.length != 0) {
-    		String formato = String.valueOf(arg[0]);
+    	formato = String.valueOf(arg[0]);
+	    orientacion = formato.charAt(3);
+	    direccion = formato.charAt(4);
+	    numero = Integer.parseInt(arg[arg.length-1]);
+	    resultado = new int[numero];
+	    calcularSerie();
+	    if (direccion == 'i') {
+	    	resultado = ordenarEnFormaDescendente(resultado);
+	    }
+    	if (arg.length == 5) {
     		String salida = String.valueOf(arg[1]);
-    	    char orientacion = formato.charAt(3);
-    	    char direccion = formato.charAt(4);
+    		String[] salidaPartes = salida.split("=");
+    		String nombreDelArchivo = salidaPartes[1];
+    		String modoFuncionamiento = String.valueOf(arg[3]);
+    		char funcionamiento = modoFuncionamiento.charAt(3);
     	    if ((orientacion != 'h' && orientacion != 'v') || (direccion != 'd' && direccion != 'i')) {
     	    	System.out.printf("Opciones no validas");
     	    	
     	    } else {
-    	    	numero = Integer.parseInt(arg[4]);
-        	    resultado = new int[numero];
-        	    calcularSerie();
-        	    if (direccion == 'i') {
-        	    	resultado = ordenarEnFormaDescendente(resultado);
-        	    }
-        	    mostrarNumerosSegunOrientacion(orientacion);
-        	    escribirSobreArchivo(salida, orientacion);
+    	    	
+        	    System.out.printf("fibo<%d> guardado en %s.txt", numero, nombreDelArchivo);
+        	    escribirSobreArchivo(nombreDelArchivo, funcionamiento);
     	    }
     	    
     	} else {
-    		numero = Integer.parseInt(arg[0]);
-    	    resultado = new int[numero];
-    	    calcularSerie();
-    	    mostrarNumerosSegunOrientacion('h');
+    	    mostrarNumerosSegunOrientacion(orientacion);
     	}
     }
     
@@ -73,34 +77,57 @@ public class Program {
 	    }
     }
     
-    private static void escribirSobreArchivo(String salida, char orientacion) {
+    private static void escribirSobreArchivo(String salida, char funcionamiento) {
     	File archivo;
     	BufferedWriter escritura;
-    	PrintWriter pw;
-    	
-    	try {
-    		archivo = new File(salida);
-			escritura = new BufferedWriter(new FileWriter(archivo));
-			pw = new PrintWriter(escritura);
-			pw.write("fibo< >: ");
-			if (orientacion == 'v') {
-				escritura.newLine();
-				for(int i = 0; i < resultado.length; i++){
-					String valor = String.valueOf(resultado[i]);
-					escritura.write(valor);
-					escritura.newLine();
-				}
-				
-			} else {
-				for(int i = 0; i < resultado.length; i++){
-					String valor = String.valueOf(resultado[i]);
-					escritura.write(valor + " ");
-				}
-			}
-			pw.close();
-			escritura.close();
-    	}catch (Exception e) {
+    	if (funcionamiento == 'l') {
+    		try {
+        		archivo = new File(salida);
+    			escritura = new BufferedWriter(new FileWriter(archivo));
+    			escritura.write("fibo<" + String.valueOf(numero) + ">: ");
+    			if (orientacion == 'v') {
+    				escritura.newLine();
+    				for(int i = 0; i < resultado.length; i++){
+    					String valor = String.valueOf(resultado[i]);
+    					escritura.write(valor);
+    					escritura.newLine();
+    				}
+    				
+    			} else {
+    				for(int i = 0; i < resultado.length; i++){
+    					String valor = String.valueOf(resultado[i]);
+    					escritura.write(valor + " ");
+    				}
+    			}
+    			escritura.close();
+        	}catch (Exception e) {
+        		
+        	}
     		
+    	} else {
+    		try {
+        		archivo = new File(salida);
+    			escritura = new BufferedWriter(new FileWriter(archivo));
+    			escritura.write("fibo<" + String.valueOf(numero) + ">s: ");
+    			if (orientacion == 'v') {
+    				escritura.newLine();
+    				escritura.write(String.valueOf(sumatoriaDeLaSerieDeFibonacci(resultado)));
+    				
+    			} else {
+    				escritura.write(String.valueOf(sumatoriaDeLaSerieDeFibonacci(resultado)));
+    			}
+    			escritura.close();
+        	}catch (Exception e) {
+        		
+        	}
     	}
+    }
+    
+    private static int sumatoriaDeLaSerieDeFibonacci(int[] numeros) {
+    	int total = 0;
+    	for (int i = 0; i < resultado.length; i++) {
+    		total += resultado[i];
+    	}
+    	return total;
     }
 }
