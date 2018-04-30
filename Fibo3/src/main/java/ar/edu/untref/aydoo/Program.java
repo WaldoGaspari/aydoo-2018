@@ -22,23 +22,34 @@ public class Program {
 	    if (direccion == 'i') {
 	    	resultado = ordenarEnFormaDescendente(resultado);
 	    }
+	    System.out.printf("%d", arg.length);
     	if (arg.length == 5) {
-    		String salida = String.valueOf(arg[1]);
-    		String[] salidaPartes = salida.split("=");
-    		String nombreDelArchivo = salidaPartes[1];
-    		String modoFuncionamiento = String.valueOf(arg[3]);
-    		char funcionamiento = modoFuncionamiento.charAt(3);
     	    if ((orientacion != 'h' && orientacion != 'v') || (direccion != 'd' && direccion != 'i')) {
     	    	System.out.printf("Opciones no validas");
     	    	
     	    } else {
-    	    	
-        	    System.out.printf("fibo<%d> guardado en %s.txt", numero, nombreDelArchivo);
-        	    escribirSobreArchivo(nombreDelArchivo, funcionamiento);
+        	    escribirSobreArchivo(arg);
     	    }
     	    
+    	} else if (arg.length == 3){
+    		String modoFuncionamiento = String.valueOf(arg[1]);
+    		char funcionamiento = modoFuncionamiento.charAt(3);
+    		if (funcionamiento == 'l') {
+    			mostrarNumerosSegunOrientacion(orientacion);
+    			
+    		} else {
+    			if (orientacion == 'h') {
+    				System.out.printf("fibo<%d>s: %d", numero, sumatoriaDeLaSerieDeFibonacci(resultado));
+    				
+    			} else {
+    				System.out.printf("fibo<%d>s: ", numero);
+    				System.out.printf("\r\n");
+    				System.out.printf("%d ",sumatoriaDeLaSerieDeFibonacci(resultado));
+    			}
+    		}
+    		
     	} else {
-    	    mostrarNumerosSegunOrientacion(orientacion);
+    		mostrarNumerosSegunOrientacion(orientacion);
     	}
     }
     
@@ -77,12 +88,18 @@ public class Program {
 	    }
     }
     
-    private static void escribirSobreArchivo(String salida, char funcionamiento) {
+    private static void escribirSobreArchivo(String[] arg) {
+    	String salida = String.valueOf(arg[1]);
+		String[] salidaPartes = salida.split("=");
+		String nombreDelArchivo = salidaPartes[1];
+		String modoFuncionamiento = String.valueOf(arg[3]);
+		char funcionamiento = modoFuncionamiento.charAt(3);
     	File archivo;
     	BufferedWriter escritura;
+    	System.out.printf("fibo<%d> guardado en %s.txt", numero, nombreDelArchivo);
     	if (funcionamiento == 'l') {
     		try {
-        		archivo = new File(salida);
+        		archivo = new File(nombreDelArchivo);
     			escritura = new BufferedWriter(new FileWriter(archivo));
     			escritura.write("fibo<" + String.valueOf(numero) + ">: ");
     			if (orientacion == 'v') {
@@ -106,7 +123,7 @@ public class Program {
     		
     	} else {
     		try {
-        		archivo = new File(salida);
+        		archivo = new File(nombreDelArchivo);
     			escritura = new BufferedWriter(new FileWriter(archivo));
     			escritura.write("fibo<" + String.valueOf(numero) + ">s: ");
     			if (orientacion == 'v') {
