@@ -22,16 +22,7 @@ public class Program {
 	    if (direccion == 'i') {
 	    	resultado = ordenarEnFormaDescendente(resultado);
 	    }
-	    System.out.printf("%d", arg.length);
-    	if (arg.length == 5) {
-    	    if ((orientacion != 'h' && orientacion != 'v') || (direccion != 'd' && direccion != 'i')) {
-    	    	System.out.printf("Opciones no validas");
-    	    	
-    	    } else {
-        	    escribirSobreArchivo(arg);
-    	    }
-    	    
-    	} else if (arg.length == 3){
+    	if (arg.length == 3){
     		String modoFuncionamiento = String.valueOf(arg[1]);
     		char funcionamiento = modoFuncionamiento.charAt(3);
     		if (funcionamiento == 'l') {
@@ -48,8 +39,16 @@ public class Program {
     			}
     		}
     		
-    	} else {
+    	} else if (arg.length == 2) {
     		mostrarNumerosSegunOrientacion(orientacion);
+    		
+    	} else {
+    		if ((orientacion != 'h' && orientacion != 'v') || (direccion != 'd' && direccion != 'i')) {
+    	    	System.out.printf("Opciones no validas");
+    	    	
+    	    } else {
+        	    escribirSobreArchivo(arg);
+    	    }
     	}
     }
     
@@ -92,8 +91,11 @@ public class Program {
     	String salida = String.valueOf(arg[1]);
 		String[] salidaPartes = salida.split("=");
 		String nombreDelArchivo = salidaPartes[1];
-		String modoFuncionamiento = String.valueOf(arg[3]);
-		char funcionamiento = modoFuncionamiento.charAt(3);
+		char funcionamiento = 'l';
+		if (arg.length == 5) {
+			String modoFuncionamiento = String.valueOf(arg[3]);
+			funcionamiento = modoFuncionamiento.charAt(3);
+		}
     	File archivo;
     	BufferedWriter escritura;
     	System.out.printf("fibo<%d> guardado en %s.txt", numero, nombreDelArchivo);
