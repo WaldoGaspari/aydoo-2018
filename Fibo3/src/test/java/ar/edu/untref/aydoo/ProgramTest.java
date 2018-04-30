@@ -2,12 +2,10 @@ package ar.edu.untref.aydoo;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class ProgramTest {
-	
-	@Ignore
+
 	@Test
 	public void probarSalidaDelMainEnFormaVerticalYDirectaDeCinco() {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -26,7 +24,6 @@ public class ProgramTest {
 	    Assert.assertEquals(esperado, salida);
 	}
 	
-	@Ignore
 	@Test
 	public void probarSalidaDelMainEnFormaHorizontalEInversaDeOcho() {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -40,7 +37,6 @@ public class ProgramTest {
 	    Assert.assertEquals(esperado, salida);
 	}
 
-	@Ignore
 	@Test
 	public void probarSalidaDelMainEnFormaVerticalEInversaDeOcho() {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -62,7 +58,6 @@ public class ProgramTest {
 	    Assert.assertEquals(esperado, salida);
 	}
 	
-	@Ignore
 	@Test
 	public void probarSalidaDelMainConOpcionesInvalidas() {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -76,17 +71,4 @@ public class ProgramTest {
 	    Assert.assertEquals(esperado, salida);
 	}
 	
-	@Ignore
-	@Test
-	public void probarSalidaDelMainDeOchoPorDefault() {
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-	    System.setOut(new PrintStream(baos));
-	    String esperado = "fibo<8>: 0 1 1 2 3 5 8 13 ";
-	    String[] argumentos = {"8"};
-
-	    Program.main(argumentos);
-	    String salida = new String(baos.toByteArray());
-
-	    Assert.assertEquals(esperado, salida);
-	}
 }

@@ -22,22 +22,22 @@ public class Program {
 	    if (direccion == 'i') {
 	    	resultado = ordenarEnFormaDescendente(resultado);
 	    }
-    	if (arg.length == 3) {
-    		String modoFuncionamiento = String.valueOf(arg[1]);
-    		char funcionamiento = modoFuncionamiento.charAt(3);
-    		mostrarNumerosSegunModoDeFuncionamiento(funcionamiento);
-    		
-    	} else if (arg.length == 2) {
-    		mostrarNumerosSegunOrientacion();
-    		
-    	} else {
-    		if ((orientacion != 'h' && orientacion != 'v') || (direccion != 'd' && direccion != 'i')) {
-    	    	System.out.printf("Opciones no validas");
-    	    	
-    	    } else {
-        	    escribirSobreArchivo(arg);
-    	    }
-    	}
+	    if ((orientacion != 'h' && orientacion != 'v') || (direccion != 'd' && direccion != 'i')) {
+	    	System.out.printf("Opciones no validas");
+	    	
+	    } else {
+	    	if (arg.length == 3) {
+	    		String modoFuncionamiento = String.valueOf(arg[1]);
+	    		char funcionamiento = modoFuncionamiento.charAt(3);
+	    		mostrarNumerosSegunModoDeFuncionamiento(funcionamiento);
+	    		
+	    	} else if (arg.length == 2) {
+	    		mostrarNumerosSegunOrientacion();
+	    		
+	    	} else {
+	        	    escribirSobreArchivo(arg);
+	    	}
+	    }
     }
     
     private static int[] ordenarEnFormaDescendente(final int[] numeros) {
