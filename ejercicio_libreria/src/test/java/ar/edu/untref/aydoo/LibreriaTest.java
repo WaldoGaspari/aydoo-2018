@@ -280,4 +280,34 @@ public class LibreriaTest {
 		
 		Assert.assertEquals(416.05, resultado, 0.0025);
 	}
+	
+	@Test
+	public void sfsfsgs() {
+		Cliente diego = new Cliente("Diego", "Ponte", "Salta 2009");
+		ArticuloDeLibreria correctorLiquido = new ArticuloDeLibreria(20.0);
+		Publicacion revistaModa = new Publicacion(25.0, Periodicidad.QUINCENAL);
+		Suscripcion suscripcionRevistaModa = new Suscripcion(revistaModa);
+		ArticuloDeLibreria biromeAzul = new ArticuloDeLibreria(10.0);
+		Publicacion revistaTejidos = new Publicacion(85.0, Periodicidad.ANUAL);
+		Suscripcion suscripcionRevistaTejidos = new Suscripcion(revistaTejidos);
+		Producto cajaFuerte = new Producto(246.0);
+		Compra compraDeMarzo = new Compra(Mes.MARZO, 2017);
+		Compra compraDeJulio = new Compra(Mes.JULIO, 2017);
+		Compra compraDeSeptiembre = new Compra(Mes.SEPTIEMBRE, 2017);
+		
+		compraDeMarzo.agregarProductoALaCompra(correctorLiquido);
+		compraDeMarzo.agregarProductoALaCompra(revistaModa);
+		compraDeJulio.agregarProductoALaCompra(biromeAzul);
+		compraDeJulio.agregarProductoALaCompra(revistaTejidos);
+		compraDeSeptiembre.agregarProductoALaCompra(cajaFuerte);
+		diego.agregarCompra(compraDeMarzo);
+		diego.agregarCompra(compraDeJulio);
+		diego.agregarCompra(compraDeSeptiembre);
+		diego.agregarSuscripcion(suscripcionRevistaModa);
+		diego.agregarSuscripcion(suscripcionRevistaTejidos);
+		libreria.agregarCliente(diego);
+		double resultado = libreria.calcularCobroDeUnClientePorAnio(diego, 2017);
+		
+		Assert.assertEquals(360.54, resultado, 0.01);
+	}
 }

@@ -23,7 +23,7 @@ public class Libreria {
 		while (iterador.hasNext()) {
 			Compra compra = iterador.next();
 			if (compra.obtenerMesDeLaCompra() == mes && compra.obtenerAnioDeLaCompra() == anio) {
-				if (this.clientes.contains(cliente) && !saberSiElClientePoseeUnaSuscripcionAnual(cliente)) {
+				if (this.clientes.contains(cliente) && !saberSiElClientePoseeUnaSuscripcionAnual(cliente, compra)) {
 					resultado = resultado + realizarDescuentoParaClienteRegistrado(compra);
 					
 				} else {
@@ -49,13 +49,19 @@ public class Libreria {
 		return totalConDescuento;
 	}
 	
-	private boolean saberSiElClientePoseeUnaSuscripcionAnual(Cliente cliente) {
+	private boolean saberSiElClientePoseeUnaSuscripcionAnual(Cliente cliente, Compra compra) {
 		boolean tieneUnaSuscripcionAnual = false;
 		Iterator<Suscripcion> iterador = cliente.obtenerSuscripciones().iterator();
 		while (iterador.hasNext()) {
 			Suscripcion suscripcion = iterador.next();
-			if (suscripcion.obtenerPublicacion().obtenerPeriodicidad() == Periodicidad.ANUAL) {
-				tieneUnaSuscripcionAnual = true;
+			Iterator<Producto> iteradorProductos = compra.obtenerProductosComprados().iterator();
+			while (iteradorProductos.hasNext()) {
+				Producto producto = iteradorProductos.next();
+				if (suscripcion.obtenerPublicacion().equals(producto)) {
+					if (suscripcion.obtenerPublicacion().obtenerPeriodicidad() == Periodicidad.ANUAL) {
+						tieneUnaSuscripcionAnual = true;
+					}
+				}
 			}
 		}
 		return tieneUnaSuscripcionAnual;
