@@ -13,7 +13,7 @@ public class CompraTest {
 	}
 	
 	@Test
-	public void unaCompraDeTresProductosDeberiaDevolverme120() {
+	public void unaCompraDeTresProductosSinIVAEnElMesDeAgostoDeberiaDevolvermeLaSumaDeLosPreciosDeLosMismos() {
 		Compra nuevaCompra = new Compra(Mes.AGOSTO);
 		Producto revista = new Producto(30.0);
 		Producto cartuchera = new Producto(70.0);

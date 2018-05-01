@@ -23,21 +23,17 @@ public class Compra {
 	}
 	
 	public List<Producto> obtenerProductosComprados() {
-		return this.productos;
+		List<Producto> productosComprados = this.productos; 
+		return productosComprados;
 	}
 	
 	public double obtenerTotalDeLaCompra() {
 		double resultado = 0;
-		if (this.productos.isEmpty()) {
-			return resultado;
-			
-		}else {
-			Iterator<Producto> iterador = this.productos.iterator();
-			while (iterador.hasNext()) {
-				Producto producto = iterador.next();
-				resultado = resultado + producto.obtenerPrecio();
-			}
-			return resultado;
+		Iterator<Producto> iterador = this.productos.iterator();
+		while (iterador.hasNext()) {
+			Producto producto = iterador.next();
+			resultado = resultado + producto.obtenerPrecio();
 		}
+		return resultado;
 	}
 }

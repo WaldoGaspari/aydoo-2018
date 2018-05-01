@@ -24,7 +24,8 @@ public class Cliente {
 	}
 	
 	public List<Compra> obtenerComprasRealizadas() {
-		return this.comprasRealizadas;
+		List<Compra> comprasRealizadas = this.comprasRealizadas;
+		return comprasRealizadas;
 	}
 
 	public void agregarSuscripcion(Suscripcion suscripcion) {
@@ -32,6 +33,7 @@ public class Cliente {
 	}
 	
 	public List<Suscripcion> obtenerSuscripciones() {
-		return this.suscripcionesAdheridas;
+		List<Suscripcion> suscripcionesObtenidas = this.suscripcionesAdheridas;
+		return suscripcionesObtenidas;
 	}
 }

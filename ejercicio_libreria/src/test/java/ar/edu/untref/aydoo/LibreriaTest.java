@@ -137,13 +137,13 @@ public class LibreriaTest {
 	public void calcularMontoACobrarDeUnClienteNoRegistradoQueNoComproNadaDeberiaDar0() {
 		Cliente mauro = new Cliente("Mauro", "Suarez", "Solis 3333");
 		
-		double resultado = libreria.calcularCobroDeUnClientePorAño(mauro);
+		double resultado = libreria.calcularCobroDeUnClientePorAnio(mauro);
 		
 		Assert.assertEquals(0.0, resultado, 0.0);
 	}
 	
 	@Test
-	public void calcularMontoACobrarDeUnClienteNoRegistradoEnUnAñoDeberiaDar479Con25() {
+	public void calcularMontoACobrarDeUnClienteNoRegistradoEnUnAnioDeberiaDar479Con25() {
 		Cliente vanesa = new Cliente("Vanesa", "Magallanes", "Alberdi 1190");
 		ArticuloDeLibreria fibrasx12 = new ArticuloDeLibreria(57.0);
 		ArticuloDeLibreria crayonesx12 = new ArticuloDeLibreria(43.0);
@@ -164,13 +164,13 @@ public class LibreriaTest {
 		vanesa.agregarCompra(compraDeMarzo);
 		vanesa.agregarCompra(compraDeJunio);
 		vanesa.agregarCompra(compraDeSeptiembre);
-		double resultado = libreria.calcularCobroDeUnClientePorAño(vanesa);
+		double resultado = libreria.calcularCobroDeUnClientePorAnio(vanesa);
 		
 		Assert.assertEquals(479.25, resultado, 0.0);
 	}
 	
 	@Test
-	public void calcularMontoACobrarDeUnClienteRegistradoEnUnAñoDeberiaDar416Con05() {
+	public void calcularMontoACobrarDeUnClienteRegistradoEnUnAnioDeberiaDar416Con05() {
 		Cliente maximiliano = new Cliente("Maximiliano", "Juarez", "Cochabamba 5186");
 		ArticuloDeLibreria correctorLiquido = new ArticuloDeLibreria(50.0);
 		ArticuloDeLibreria biromeAzul = new ArticuloDeLibreria(10.0);
@@ -196,7 +196,7 @@ public class LibreriaTest {
 		maximiliano.agregarCompra(compraDeSeptiembre);
 		maximiliano.agregarCompra(compraDeOctubre);
 		libreria.agregarCliente(maximiliano);
-		double resultado = libreria.calcularCobroDeUnClientePorAño(maximiliano);
+		double resultado = libreria.calcularCobroDeUnClientePorAnio(maximiliano);
 		
 		Assert.assertEquals(416.05, resultado, 0.0025);
 	}
@@ -220,7 +220,7 @@ public class LibreriaTest {
 	}
 	
 	@Test
-	public void calcularImporteTotalACobrarDeTodosLosClientesRegistradosParaMarzoDeberiaDar() {
+	public void calcularImporteTotalACobrarDeTodosLosClientesRegistradosParaMarzoDeberiaDar162Con75() {
 		Cliente agustina = new Cliente("Agustina", "Soto", "Magaldi 5512");
 		Cliente natalia = new Cliente("Natalia", "Villalba", "Honduras 2977");
 		Producto plasticola = new Producto(40.0);
