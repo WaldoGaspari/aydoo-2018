@@ -2,14 +2,14 @@ package ar.edu.untref.aydoo;
 
 public class ArticuloDeLibreria extends Producto {
 
-	private final double IVA = 0.21;
+	private final static double IVA = 0.21;
 	
 	public ArticuloDeLibreria(double precio) {
-		super(precio);
-		this.cambiarPrecio(this.obtenerPrecio() + calcularIVA(precio));
+		super(calcularPrecioConIVA(precio));
 	}
 	
-	private double calcularIVA(double precio) {
-		return precio * this.IVA;
+	private static double calcularPrecioConIVA(double precio) {
+		double IvaDelProducto = precio * IVA; 
+		return precio + IvaDelProducto;
 	}
 }
