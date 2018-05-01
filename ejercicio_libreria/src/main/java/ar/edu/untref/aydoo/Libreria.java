@@ -16,13 +16,13 @@ public class Libreria {
 		this.clientes.add(nuevoCliente);
 	}
 
-	public double calcularCobroDeUnClientePorMes(Mes mes, Cliente cliente) {
+	public double calcularCobroDeUnClientePorMes(Mes mes, Cliente cliente, int anio) {
 		double resultado = 0;
 		List<Compra> comprasDelCliente = cliente.obtenerComprasRealizadas();
 		Iterator<Compra> iterador = comprasDelCliente.iterator();
 		while (iterador.hasNext()) {
 			Compra compra = iterador.next();
-			if (compra.obtenerMesDeLaCompra() == mes) {
+			if (compra.obtenerMesDeLaCompra() == mes && compra.obtenerAnioDeLaCompra() == anio) {
 				if (this.clientes.contains(cliente) && !saberSiElClientePoseeUnaSuscripcionAnual(cliente)) {
 					resultado = resultado + realizarDescuentoParaClienteRegistrado(compra);
 					
@@ -34,11 +34,11 @@ public class Libreria {
 		return resultado;
 	}
 	
-	public double calcularCobroDeUnClientePorAnio(Cliente cliente) {
+	public double calcularCobroDeUnClientePorAnio(Cliente cliente, int anio) {
 		double resultado = 0;
 		Mes[] meses = Mes.values();
 		for (int i = 0; i < meses.length; i++) {
-			resultado = resultado + calcularCobroDeUnClientePorMes(meses[i], cliente);
+			resultado = resultado + calcularCobroDeUnClientePorMes(meses[i], cliente, anio);
 		}
 		return resultado;
 	}
@@ -61,14 +61,12 @@ public class Libreria {
 		return tieneUnaSuscripcionAnual;
 	}
 
-	public double calcularTotalACobrarDeLosClientesRegistradosPorMes(Mes mes) {
+	public double calcularTotalACobrarDeLosClientesRegistradosPorMes(Mes mes, int anio) {
 		double totalPorMes = 0;
-		if (!this.clientes.isEmpty()) {
-			Iterator<Cliente> iterador = this.clientes.iterator();
-			while (iterador.hasNext()) {
-				Cliente cliente = iterador.next();
-				totalPorMes = totalPorMes + calcularCobroDeUnClientePorMes(mes,cliente);
-			}
+		Iterator<Cliente> iterador = this.clientes.iterator();
+		while (iterador.hasNext()) {
+			Cliente cliente = iterador.next();
+			totalPorMes += calcularCobroDeUnClientePorMes(mes,cliente, anio);
 		}
 		return totalPorMes;
 	}

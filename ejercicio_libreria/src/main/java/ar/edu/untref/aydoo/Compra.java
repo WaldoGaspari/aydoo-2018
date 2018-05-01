@@ -7,10 +7,12 @@ import java.util.List;
 public class Compra {
 	
 	private Mes mes;
+	private int anio;
 	private List<Producto> productos;
 	
-	public Compra(Mes mes) {
+	public Compra(Mes mes, int anio) {
 		this.mes = mes;
+		this.anio = anio;
 		this.productos = new LinkedList<Producto>();
 	}
 	
@@ -20,6 +22,10 @@ public class Compra {
 	
 	public Mes obtenerMesDeLaCompra() {
 		return this.mes;
+	}
+	
+	public int obtenerAnioDeLaCompra() {
+		return this.anio;
 	}
 	
 	public List<Producto> obtenerProductosComprados() {
