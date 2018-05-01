@@ -8,8 +8,8 @@ public class Tablero {
 	
 	public Tablero() {
 		casilleros = new Casillero[ancho][largo];
-		for(int fila = 0; fila < this.ancho; fila++) {
-			for(int columna = 0; columna < this.largo; columna++) {
+		for (int fila = 0; fila < this.ancho; fila++) {
+			for (int columna = 0; columna < this.largo; columna++) {
 				this.casilleros[fila][columna] = new Casillero();
 			}
 		}
@@ -42,7 +42,7 @@ public class Tablero {
 						}
 						
 					} else {
-						throw new Error ("No se puede colocar el barco. Parte del mismo se encuentra fuera de los limites del tablero");
+						throw new Error("No se puede colocar el barco. Parte del mismo se encuentra fuera de los limites del tablero");
 					}
 					
 				} else {
@@ -50,7 +50,7 @@ public class Tablero {
 				}
 				
 			} else {
-				throw new Error ( "No se puede colocar el barco. Ya hay otro");
+				throw new Error("No se puede colocar el barco. Ya hay otro");
 			}
 			
 		} catch (ArrayIndexOutOfBoundsException exception) {

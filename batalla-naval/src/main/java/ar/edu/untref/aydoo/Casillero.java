@@ -8,7 +8,7 @@ public class Casillero {
 		this.barco = null;
 	}
 	
-	public boolean estaVacio() {	
+	public boolean estaVacio() {
 		return this.barco == null;
 	}
 

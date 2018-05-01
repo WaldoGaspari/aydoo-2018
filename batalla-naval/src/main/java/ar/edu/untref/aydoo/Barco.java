@@ -12,7 +12,7 @@ public class Barco {
 		this.orientacion = orientacionDelBarco;
 	}
 
-	public int obtenerTamanio() {		
+	public int obtenerTamanio() {
 		return this.tamanio;
 	}
 	
@@ -21,9 +21,9 @@ public class Barco {
 	}
 
 	public void tocado() {
-		if(this.tamanio > this.parteDaniada) {
+		if (this.tamanio > this.parteDaniada) {
 			this.parteDaniada++;
-		}		
+		}
 	}
 
 	public boolean estaHundido() {

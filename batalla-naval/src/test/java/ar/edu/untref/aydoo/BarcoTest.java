@@ -3,7 +3,7 @@ package ar.edu.untref.aydoo;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class TestBarco {
+public class BarcoTest {
 	
 	@Test
 	public void barcoDeberiaTenerTamanioAsignadoEnConstructor() {
