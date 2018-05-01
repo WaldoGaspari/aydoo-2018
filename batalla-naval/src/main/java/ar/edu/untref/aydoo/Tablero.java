@@ -31,19 +31,7 @@ public class Tablero {
 		try {
 			if (noHayBarcoEnCasillero(fila, columna)) {
 				if (barco.obtenerTamanio() == 2) {
-					if (fila + 1 < this.ancho && columna + 1 < this.largo) {
-						if (barco.obtenerOrientacion() == 'H') {
-							this.casilleros[fila][columna].ponerBarco(barco);
-							this.casilleros[fila][columna + 1].ponerBarco(barco);
-							
-						} else {
-							this.casilleros[fila][columna].ponerBarco(barco);
-							this.casilleros[fila + 1][columna].ponerBarco(barco);
-						}
-						
-					} else {
-						throw new Error("No se puede colocar el barco. Parte del mismo se encuentra fuera de los limites del tablero");
-					}
+					colocarBarcoDeTamanioDos(fila, columna, barco);
 					
 				} else {
 					this.casilleros[fila][columna].ponerBarco(barco);
@@ -66,5 +54,21 @@ public class Tablero {
 
 	public Casillero obtenerCasillero(int fila, int columna) {
 		return this.casilleros[fila][columna];
+	}
+	
+	public void colocarBarcoDeTamanioDos(int fila, int columna, Barco barco) {
+		if (fila + 1 < this.ancho && columna + 1 < this.largo) {
+			if (barco.obtenerOrientacion() == 'H') {
+				this.casilleros[fila][columna].ponerBarco(barco);
+				this.casilleros[fila][columna + 1].ponerBarco(barco);
+				
+			} else {
+				this.casilleros[fila][columna].ponerBarco(barco);
+				this.casilleros[fila + 1][columna].ponerBarco(barco);
+			}
+			
+		} else {
+			throw new Error("No se puede colocar el barco. Parte del mismo se encuentra fuera de los limites del tablero");
+		}
 	}
 }
