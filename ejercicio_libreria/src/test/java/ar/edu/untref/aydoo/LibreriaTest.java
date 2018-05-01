@@ -282,7 +282,7 @@ public class LibreriaTest {
 	}
 	
 	@Test
-	public void sfsfsgs() {
+	public void calcularMontoACobrarDeUnClienteRegistradoDuranteElAnio2018NoDebeContemplarElDescuentoDe5ProcentajeEnAquellasComprasQuePoseanUnaSuscripcionAnual() {
 		Cliente diego = new Cliente("Diego", "Ponte", "Salta 2009");
 		ArticuloDeLibreria correctorLiquido = new ArticuloDeLibreria(20.0);
 		Publicacion revistaModa = new Publicacion(25.0, Periodicidad.QUINCENAL);
