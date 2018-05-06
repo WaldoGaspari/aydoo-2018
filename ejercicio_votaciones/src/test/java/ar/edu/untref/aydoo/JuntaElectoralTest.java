@@ -251,5 +251,18 @@ public class JuntaElectoralTest {
 		
 		Assert.assertEquals(partidoRadical, partidoGanador);
 	}
+	
+	@Test (expected = Error.class)
+	public void unElectorSoloDeberiaPoderVotarUnaSolaVez(){
+		Elector eduardo = new Elector();
+		Candidato antonellaSuarez = new Candidato(Provincia.CATAMARCA);
+		Candidato lorenaJimenez = new Candidato(Provincia.CHACO);
+		
+		Voto unVoto = eduardo.votar(antonellaSuarez);
+		Voto segundoVoto = eduardo.votar(lorenaJimenez);
+		
+		Assert.assertEquals(null, segundoVoto.obtenerCandidato());
+		Assert.assertEquals(unVoto.obtenerCandidato(), antonellaSuarez);
+	}
 
 }
