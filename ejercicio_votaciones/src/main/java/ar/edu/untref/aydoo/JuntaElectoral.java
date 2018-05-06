@@ -10,10 +10,12 @@ public class JuntaElectoral {
 
 	private Set<Voto> votos;
 	private List<Candidato> candidatos;
+	private List<Partido> partidos;
 	
 	public JuntaElectoral() {
 		this.votos = new HashSet<Voto>();
 		this.candidatos = new LinkedList<Candidato>();
+		this.partidos = new LinkedList<Partido>();
 	}
 	
 	public int contarVotosDeUnCandidato(Candidato candidato) {
@@ -35,6 +37,10 @@ public class JuntaElectoral {
 	public void agregarCandidato(Candidato candidato) {
 		this.candidatos.add(candidato);
 	}
+	
+	public void agregarPartido(Partido partido) {
+		this.partidos.add(partido);
+	}
 
 	public Candidato obtenerCandidatoConMasVotosDeUnaProvincia(Provincia provincia) {
 		Candidato candidatoGanador = null;
@@ -51,6 +57,27 @@ public class JuntaElectoral {
 			}
 		}
 		return candidatoGanador;
+	}
+
+	public Partido obtenerPartidoConMasVotosANivelNacional() {
+		Partido partidoGanador = null;
+		int votosTotales = 0;
+		Provincia[] provincias = Provincia.values();
+		Iterator<Partido> iterador = this.partidos.iterator();
+		while (iterador.hasNext()) {
+			Partido partido = iterador.next();
+			for (int posicion = 0; posicion < provincias.length; posicion ++) {
+				Candidato candidato = obtenerCandidatoConMasVotosDeUnaProvincia(provincias[posicion]);
+				if (partido.obtenerListaDeCandidatos().contains(candidato)) {
+					partido.agregarVotos(contarVotosDeUnCandidato(candidato));
+				}
+			}
+			if (partido.obtenerVotosTotales() > votosTotales) {
+				votosTotales = partido.obtenerVotosTotales();
+				partidoGanador = partido;
+			}
+		}
+		return partidoGanador;
 	}
 
 }
