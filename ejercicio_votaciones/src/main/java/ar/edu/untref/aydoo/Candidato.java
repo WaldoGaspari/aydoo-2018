@@ -11,5 +11,4 @@ public class Candidato {
 	public Provincia obtenerProvincia() {
 		return this.provincia;
 	}
-
 }
