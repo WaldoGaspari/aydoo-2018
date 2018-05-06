@@ -87,7 +87,7 @@ public class Program {
     
     private static void calcularSerie() {
     	for (int numeroDeLaSerie = 0; numeroDeLaSerie < numero; numeroDeLaSerie++) {
-	    	resultado[numeroDeLaSerie] = SerieFibonacci.calcularSerieDeFibonacci(numeroDeLaSerie);
+	    	resultado[numeroDeLaSerie] = SerieFibonacci.calcularElementoEnLaSerieDeFibonacci(numeroDeLaSerie);
 	    }
     }
     
