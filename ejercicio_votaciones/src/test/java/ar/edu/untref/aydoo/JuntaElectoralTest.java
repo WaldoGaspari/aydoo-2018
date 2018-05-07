@@ -13,7 +13,7 @@ public class JuntaElectoralTest {
 	}
 	
 	@Test
-	public void calcularCantidadDeVotosParaUnCandidatoQueFueVotadoSoloUnaVezDeberiaDarUno() {
+	public void calcularCantidadDeVotosParaUnCandidatoQueFueVotadoSoloUnaVezDeberiaDarUno() throws VotoUnicoException {
 		Elector pedro = new Elector();
 		Candidato martinPaz = new Candidato("Martin Paz",Provincia.BUENOSAIRES);
 		
@@ -24,7 +24,7 @@ public class JuntaElectoralTest {
 	}
 	
 	@Test
-	public void calcularCantidadDeVotosParaUnCandidatoQueFueVotadoTresVecesDeberiaDarTres() {
+	public void calcularCantidadDeVotosParaUnCandidatoQueFueVotadoTresVecesDeberiaDarTres() throws VotoUnicoException {
 		Elector pedro = new Elector();
 		Elector juan = new Elector();
 		Elector manuel = new Elector();
@@ -41,7 +41,7 @@ public class JuntaElectoralTest {
 	}
 	
 	@Test
-	public void calcularCantidadDeVotosParaUnCandidatoQueFueVotadoDosVecesHabiendoOtroCandidatoDeberiaDarDos() {
+	public void calcularCantidadDeVotosParaUnCandidatoQueFueVotadoDosVecesHabiendoOtroCandidatoDeberiaDarDos() throws VotoUnicoException {
 		Elector maria = new Elector();
 		Elector juana = new Elector();
 		Elector lucas = new Elector();
@@ -62,7 +62,7 @@ public class JuntaElectoralTest {
 	}
 	
 	@Test
-	public void calcularCandidatoConMasVotosEnLaProvinciaDeBuenosAires() {
+	public void calcularCandidatoConMasVotosEnLaProvinciaDeBuenosAires() throws VotoUnicoException {
 		Elector maria = new Elector();
 		Elector juana = new Elector();
 		Elector lucas = new Elector();
@@ -94,7 +94,7 @@ public class JuntaElectoralTest {
 	}
 	
 	@Test
-	public void calcularCandidatoConMasVotosEnLaProvinciaDeBuenosAiresHabiendoCandidatosEnOtrasProvincias() {
+	public void calcularCandidatoConMasVotosEnLaProvinciaDeBuenosAiresHabiendoCandidatosEnOtrasProvincias() throws VotoUnicoException {
 		Elector maria = new Elector();
 		Elector juana = new Elector();
 		Elector lucas = new Elector();
@@ -134,7 +134,7 @@ public class JuntaElectoralTest {
 	}
 	
 	@Test
-	public void calcularPartidoConMasVotosANivelNacionalDeberiaDarPartidoJusticialista() throws CandidatoEnUnPartidoException {
+	public void calcularPartidoConMasVotosANivelNacionalDeberiaDarPartidoJusticialista() throws CandidatoEnUnPartidoException, VotoUnicoException {
 		Elector maria = new Elector();
 		Elector juana = new Elector();
 		Elector lucas = new Elector();
@@ -188,7 +188,7 @@ public class JuntaElectoralTest {
 	}
 	
 	@Test
-	public void calcularPartidoConMasVotosDeberiaDarPartidoRadicalHabiendoOtrosDosPartidos() throws CandidatoEnUnPartidoException {
+	public void calcularPartidoConMasVotosDeberiaDarPartidoRadicalHabiendoOtrosDosPartidos() throws CandidatoEnUnPartidoException, VotoUnicoException {
 		Elector maria = new Elector();
 		Elector juana = new Elector();
 		Elector lucas = new Elector();
@@ -252,8 +252,8 @@ public class JuntaElectoralTest {
 		Assert.assertEquals(partidoRadical, partidoGanador);
 	}
 	
-	@Test (expected = Error.class)
-	public void unElectorSoloDeberiaPoderVotarUnaSolaVez(){
+	@Test (expected = Exception.class)
+	public void unElectorSoloDeberiaPoderVotarUnaSolaVez() throws VotoUnicoException{
 		Elector eduardo = new Elector();
 		Candidato antonellaSuarez = new Candidato("Antonella Suarez", Provincia.CATAMARCA);
 		Candidato lorenaJimenez = new Candidato("Lorena Jimenez", Provincia.CHACO);
