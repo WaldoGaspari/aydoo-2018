@@ -134,7 +134,7 @@ public class JuntaElectoralTest {
 	}
 	
 	@Test
-	public void calcularPartidoConMasVotosANivelNacionalDeberiaDarPartidoJusticialista() {
+	public void calcularPartidoConMasVotosANivelNacionalDeberiaDarPartidoJusticialista() throws CandidatoEnUnPartidoException {
 		Elector maria = new Elector();
 		Elector juana = new Elector();
 		Elector lucas = new Elector();
@@ -188,7 +188,7 @@ public class JuntaElectoralTest {
 	}
 	
 	@Test
-	public void calcularPartidoConMasVotosDeberiaDarPartidoRadicalHabiendoOtrosDosPartidos() {
+	public void calcularPartidoConMasVotosDeberiaDarPartidoRadicalHabiendoOtrosDosPartidos() throws CandidatoEnUnPartidoException {
 		Elector maria = new Elector();
 		Elector juana = new Elector();
 		Elector lucas = new Elector();
@@ -263,6 +263,18 @@ public class JuntaElectoralTest {
 		
 		Assert.assertEquals(null, segundoVoto.obtenerCandidato());
 		Assert.assertEquals(unVoto.obtenerCandidato(), antonellaSuarez);
+	}
+	
+	@Test (expected = Exception.class)
+	public void unCandidatoNoDeberiaPoderEstarEnDosPartidosAlMismoTiempo() throws CandidatoEnUnPartidoException {
+		Candidato lorenaJimenez = new Candidato("Lorena Jimenez", Provincia.CHACO);
+		Partido partidoJusticialista = new Partido();
+		Partido partidoRadical = new Partido();
+		
+		partidoJusticialista.agregarCandidato(lorenaJimenez);
+		partidoRadical.agregarCandidato(lorenaJimenez);
+		
+		Assert.assertFalse(partidoRadical.obtenerListaDeCandidatos().contains(lorenaJimenez));
 	}
 
 }

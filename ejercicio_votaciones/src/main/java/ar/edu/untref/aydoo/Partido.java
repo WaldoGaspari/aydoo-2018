@@ -13,8 +13,14 @@ public class Partido {
 		this.votosTotales = 0;
 	}
 	
-	public void agregarCandidato(Candidato candidato) {
-		this.candidatos.add(candidato);
+	public void agregarCandidato(Candidato candidato) throws CandidatoEnUnPartidoException {
+		if (!candidato.tieneUnPartidoAsignado()) {
+			this.candidatos.add(candidato);
+			candidato.seLeAsignaUnPartido();
+			
+		} else {
+			throw new CandidatoEnUnPartidoException();
+		}
 	}
 	
 	public void agregarVotos(int cantidad) {
