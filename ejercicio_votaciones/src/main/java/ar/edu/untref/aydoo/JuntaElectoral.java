@@ -66,14 +66,17 @@ public class JuntaElectoral {
 		Iterator<Partido> iterador = this.partidos.iterator();
 		while (iterador.hasNext()) {
 			Partido partido = iterador.next();
+			int votosDelPartido = 0;
 			for (int posicion = 0; posicion < provincias.length; posicion++) {
-				Candidato candidato = obtenerCandidatoConMasVotosDeUnaProvincia(provincias[posicion]);
-				if (partido.obtenerListaDeCandidatos().contains(candidato)) {
-					partido.agregarVotos(contarVotosDeUnCandidato(candidato));
+				for (int posicionCandidato = 0; posicionCandidato < partido.obtenerListaDeCandidatos().size(); posicionCandidato++) {
+					Candidato candidato = partido.obtenerListaDeCandidatos().get(posicionCandidato);
+					if (candidato.obtenerProvincia() == provincias[posicion]) {
+						votosDelPartido += contarVotosDeUnCandidato(candidato);
+					}
 				}
 			}
-			if (partido.obtenerVotosTotales() > votosTotales) {
-				votosTotales = partido.obtenerVotosTotales();
+			if (votosDelPartido > votosTotales) {
+				votosTotales = votosDelPartido;
 				partidoGanador = partido;
 			}
 		}
