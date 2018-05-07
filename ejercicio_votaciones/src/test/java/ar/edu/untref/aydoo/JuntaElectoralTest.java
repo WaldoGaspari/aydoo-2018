@@ -15,7 +15,7 @@ public class JuntaElectoralTest {
 	@Test
 	public void calcularCantidadDeVotosParaUnCandidatoQueFueVotadoSoloUnaVezDeberiaDarUno() {
 		Elector pedro = new Elector();
-		Candidato martinPaz = new Candidato(Provincia.BUENOSAIRES);
+		Candidato martinPaz = new Candidato("Martin Paz",Provincia.BUENOSAIRES);
 		
 		Voto voto = pedro.votar(martinPaz);
 		juntaDeLasPaso.guardarVoto(voto);
@@ -28,7 +28,7 @@ public class JuntaElectoralTest {
 		Elector pedro = new Elector();
 		Elector juan = new Elector();
 		Elector manuel = new Elector();
-		Candidato martinPaz = new Candidato(Provincia.BUENOSAIRES);
+		Candidato martinPaz = new Candidato("Martin Paz", Provincia.BUENOSAIRES);
 		
 		Voto unVoto = pedro.votar(martinPaz);
 		Voto segundoVoto = juan.votar(martinPaz);
@@ -46,8 +46,8 @@ public class JuntaElectoralTest {
 		Elector juana = new Elector();
 		Elector lucas = new Elector();
 		Elector juan = new Elector();
-		Candidato martinPaz = new Candidato(Provincia.BUENOSAIRES);
-		Candidato pedroMartinez = new Candidato(Provincia.BUENOSAIRES);
+		Candidato martinPaz = new Candidato("Martin Paz", Provincia.BUENOSAIRES);
+		Candidato pedroMartinez = new Candidato("Pedro Martinez", Provincia.BUENOSAIRES);
 		
 		Voto unVoto = maria.votar(martinPaz);
 		Voto segundoVoto = juana.votar(pedroMartinez);
@@ -69,9 +69,9 @@ public class JuntaElectoralTest {
 		Elector juan = new Elector();
 		Elector ezequiel = new Elector();
 		Elector vanesa = new Elector();
-		Candidato martinPaz = new Candidato(Provincia.BUENOSAIRES);
-		Candidato pedroMartinez = new Candidato(Provincia.BUENOSAIRES);
-		Candidato antonellaSuarez = new Candidato(Provincia.BUENOSAIRES);
+		Candidato martinPaz = new Candidato("Martin Paz", Provincia.BUENOSAIRES);
+		Candidato pedroMartinez = new Candidato("Pedro Martinez", Provincia.BUENOSAIRES);
+		Candidato antonellaSuarez = new Candidato("Antonella Suarez", Provincia.BUENOSAIRES);
 		
 		Voto unVoto = maria.votar(martinPaz);
 		Voto segundoVoto = juana.votar(pedroMartinez);
@@ -103,10 +103,10 @@ public class JuntaElectoralTest {
 		Elector vanesa = new Elector();
 		Elector nahuel = new Elector();
 		Elector marta = new Elector();
-		Candidato martinPaz = new Candidato(Provincia.BUENOSAIRES);
-		Candidato pedroMartinez = new Candidato(Provincia.BUENOSAIRES);
-		Candidato antonellaSuarez = new Candidato(Provincia.CATAMARCA);
-		Candidato lorenaJimenez = new Candidato(Provincia.CHACO);
+		Candidato martinPaz = new Candidato("Martin Paz", Provincia.BUENOSAIRES);
+		Candidato pedroMartinez = new Candidato("Pedro Martinez", Provincia.BUENOSAIRES);
+		Candidato antonellaSuarez = new Candidato("Antonella Suarez", Provincia.CATAMARCA);
+		Candidato lorenaJimenez = new Candidato("Lorena Jimenez", Provincia.CHACO);
 		
 		Voto unVoto = maria.votar(martinPaz);
 		Voto segundoVoto = juana.votar(pedroMartinez);
@@ -145,10 +145,10 @@ public class JuntaElectoralTest {
 		Elector marta = new Elector();
 		Elector eduardo = new Elector();
 		Elector isabel = new Elector();
-		Candidato martinPaz = new Candidato(Provincia.BUENOSAIRES);
-		Candidato pedroMartinez = new Candidato(Provincia.CORDOBA);
-		Candidato antonellaSuarez = new Candidato(Provincia.CATAMARCA);
-		Candidato lorenaJimenez = new Candidato(Provincia.CHACO);
+		Candidato martinPaz = new Candidato("Martin Paz", Provincia.BUENOSAIRES);
+		Candidato pedroMartinez = new Candidato("Pedro Martinez", Provincia.CORDOBA);
+		Candidato antonellaSuarez = new Candidato("Antonella Suarez", Provincia.CATAMARCA);
+		Candidato lorenaJimenez = new Candidato("Lorena Jimenez", Provincia.CHACO);
 		Partido partidoJusticialista = new Partido();
 		Partido partidoRadical = new Partido();
 		
@@ -201,11 +201,11 @@ public class JuntaElectoralTest {
 		Elector isabel = new Elector();
 		Elector lorena = new Elector();
 		Elector marcelo = new Elector();
-		Candidato martinPaz = new Candidato(Provincia.BUENOSAIRES);
-		Candidato pedroMartinez = new Candidato(Provincia.CORDOBA);
-		Candidato antonellaSuarez = new Candidato(Provincia.CATAMARCA);
-		Candidato lorenaJimenez = new Candidato(Provincia.CHACO);
-		Candidato augustoGarcia = new Candidato(Provincia.CHACO);
+		Candidato martinPaz = new Candidato("Martin Paz", Provincia.BUENOSAIRES);
+		Candidato pedroMartinez = new Candidato("Pedro Martinez", Provincia.CORDOBA);
+		Candidato antonellaSuarez = new Candidato("Antonella Suarez", Provincia.CATAMARCA);
+		Candidato lorenaJimenez = new Candidato("Lorena Jimenez", Provincia.CHACO);
+		Candidato augustoGarcia = new Candidato("Augusto Garcia", Provincia.CHACO);
 		Partido partidoJusticialista = new Partido();
 		Partido partidoRadical = new Partido();
 		Partido partidoSocialista = new Partido();
@@ -255,8 +255,8 @@ public class JuntaElectoralTest {
 	@Test (expected = Error.class)
 	public void unElectorSoloDeberiaPoderVotarUnaSolaVez(){
 		Elector eduardo = new Elector();
-		Candidato antonellaSuarez = new Candidato(Provincia.CATAMARCA);
-		Candidato lorenaJimenez = new Candidato(Provincia.CHACO);
+		Candidato antonellaSuarez = new Candidato("Antonella Suarez", Provincia.CATAMARCA);
+		Candidato lorenaJimenez = new Candidato("Lorena Jimenez", Provincia.CHACO);
 		
 		Voto unVoto = eduardo.votar(antonellaSuarez);
 		Voto segundoVoto = eduardo.votar(lorenaJimenez);
