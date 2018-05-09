@@ -12,9 +12,9 @@ public class Partido {
 	}
 	
 	public void agregarCandidato(Candidato candidato) throws CandidatoEnUnPartidoException {
-		if (!candidato.tieneUnPartidoAsignado()) {
+		if (candidato.obtenerPartido() == null) {
 			this.candidatos.add(candidato);
-			candidato.seLeAsignaUnPartido();
+			candidato.asignarPartido(this);
 			
 		} else {
 			throw new CandidatoEnUnPartidoException();

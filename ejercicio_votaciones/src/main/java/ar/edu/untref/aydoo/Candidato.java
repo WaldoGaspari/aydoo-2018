@@ -4,23 +4,23 @@ public class Candidato {
 	
 	private Provincia provincia;
 	private String nombre;
-	private boolean tieneUnPartido;
+	private Partido partido;
 	
 	public Candidato(String nombre, Provincia provincia) {
 		this.provincia = provincia;
 		this.nombre = nombre;
-		this.tieneUnPartido = false;
+		this.partido = null;
 	}
 	
 	public Provincia obtenerProvincia() {
 		return this.provincia;
 	}
 	
-	public boolean tieneUnPartidoAsignado() {
-		return this.tieneUnPartido;
+	public Partido obtenerPartido() {
+		return this.partido;
 	}
 	
-	public void seLeAsignaUnPartido() {
-		this.tieneUnPartido = true;
+	public void asignarPartido(Partido partido) {
+		this.partido = partido;
 	}
 }
