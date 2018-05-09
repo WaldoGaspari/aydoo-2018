@@ -20,15 +20,6 @@ public class Program {
 	    if (arg.length == 1) {
 	    	mostrarNumerosSegunOrientacion('h');
 	    	
-	    } else if (arg.length == 2) {
-	    	formato = String.valueOf(arg[0]);
-		    orientacion = formato.charAt(3);
-		    direccion = formato.charAt(4);
-		    if (direccion == 'i') {
-		    	resultado = ordenarEnFormaDescendente(resultado);
-		    }
-		    mostrarNumerosSegunOrientacion(orientacion);
-		    
 	    } else {
 	    	String modoFuncionamiento = null;
 	    	char funcionamiento = ' ';
@@ -55,22 +46,24 @@ public class Program {
 	    		}
 	    	}
 	    	
-	    	if (formato != null && modoFuncionamiento != null && salida == null) {
-	    		mostrarNumerosSegunModoDeFuncionamiento(funcionamiento, orientacion);
-	    	} else {
-	    		escribirSobreArchivo(nombreDelArchivo, funcionamiento);
-	    	}
-		 
+	    	if ((orientacion != 'h' && orientacion != 'v') || (direccion != 'd' && direccion != 'i')) {
+		    	System.out.printf("Opciones no validas");
+		    	
+		    } else {
+		    	if (formato != null && modoFuncionamiento == null && salida == null) {
+		    		if (direccion == 'i') {
+				    	resultado = ordenarEnFormaDescendente(resultado);
+				    }
+				    mostrarNumerosSegunOrientacion(orientacion);
+				    
+		    	} else if (formato != null && modoFuncionamiento != null && salida == null) {
+		    		mostrarNumerosSegunModoDeFuncionamiento(funcionamiento, orientacion);
+		    		
+		    	} else {
+		    		escribirSobreArchivo(nombreDelArchivo, funcionamiento);
+		    	}
+		    }
 	    }
-	    /*
-	    if ((orientacion != 'h' && orientacion != 'v') || (direccion != 'd' && direccion != 'i')) {
-	    	System.out.printf("Opciones no validas");
-	    	
-	    } else {
-	    	
-	    	
-	    }
-	    */
     }
     
     private static int[] ordenarEnFormaDescendente(final int[] numeros) {
