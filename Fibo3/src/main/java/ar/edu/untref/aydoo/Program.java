@@ -13,31 +13,64 @@ public class Program {
 	private static char direccion;
 	
     public static final void main(final String[] arg) {
-    	formato = String.valueOf(arg[0]);
-	    orientacion = formato.charAt(3);
-	    direccion = formato.charAt(4);
 	    numero = Integer.parseInt(arg[arg.length - 1]);
 	    resultado = new int[numero];
 	    calcularSerie();
-	    if (direccion == 'i') {
-	    	resultado = ordenarEnFormaDescendente(resultado);
+	    
+	    if (arg.length == 1) {
+	    	mostrarNumerosSegunOrientacion('h');
+	    	
+	    } else if (arg.length == 2) {
+	    	formato = String.valueOf(arg[0]);
+		    orientacion = formato.charAt(3);
+		    direccion = formato.charAt(4);
+		    if (direccion == 'i') {
+		    	resultado = ordenarEnFormaDescendente(resultado);
+		    }
+		    mostrarNumerosSegunOrientacion(orientacion);
+		    
+	    } else {
+	    	String modoFuncionamiento = null;
+	    	char funcionamiento = ' ';
+	    	String salida = null;
+	    	String[] salidaPartes = null;
+	    	String nombreDelArchivo = null;
+	    	for (int i = 0; i < arg.length-1; i++) {
+	    		if (arg[i].startsWith("-o")) {
+	    			formato = String.valueOf(arg[i]);
+	    			orientacion = formato.charAt(3);
+				    direccion = formato.charAt(4);
+				    if (direccion == 'i') {
+				    	resultado = ordenarEnFormaDescendente(resultado);
+				    }
+	    			
+	    		} else if (arg[i].startsWith("-m")) {
+	    			modoFuncionamiento = String.valueOf(arg[i]);
+	    			funcionamiento = modoFuncionamiento.charAt(3);
+	    			
+	    		} else if (arg[i].startsWith("-f")) {
+	    			salida = String.valueOf(arg[i]);
+	    			salidaPartes = salida.split("=");
+	    			nombreDelArchivo = salidaPartes[1];
+	    		}
+	    	}
+	    	
+	    	if (formato != null && modoFuncionamiento != null && salida == null) {
+	    		mostrarNumerosSegunModoDeFuncionamiento(funcionamiento, orientacion);
+	    	} else {
+	    		escribirSobreArchivo(nombreDelArchivo, funcionamiento);
+	    	}
+		 
 	    }
+	    /*
 	    if ((orientacion != 'h' && orientacion != 'v') || (direccion != 'd' && direccion != 'i')) {
 	    	System.out.printf("Opciones no validas");
 	    	
 	    } else {
-	    	if (arg.length == 3) {
-	    		String modoFuncionamiento = String.valueOf(arg[1]);
-	    		char funcionamiento = modoFuncionamiento.charAt(3);
-	    		mostrarNumerosSegunModoDeFuncionamiento(funcionamiento);
-	    		
-	    	} else if (arg.length == 2) {
-	    		mostrarNumerosSegunOrientacion();
-	    		
-	    	} else {
-	        	    escribirSobreArchivo(arg);
-	    	}
+	    	
+	    	
 	    }
+	    */
     }
     
     private static int[] ordenarEnFormaDescendente(final int[] numeros) {
@@ -54,7 +87,7 @@ public class Program {
 		return numerosDescendentes;
 	}
     
-    private static void mostrarNumerosSegunOrientacion() {
+    private static void mostrarNumerosSegunOrientacion(char orientacion) {
     	System.out.printf("fibo<%d>: ", numero);
 	    if (orientacion == 'v') {
 	    	System.out.printf("\r\n");
@@ -69,9 +102,9 @@ public class Program {
 	    }
     }
     
-    private static void mostrarNumerosSegunModoDeFuncionamiento(final char funcionamiento) {
+    private static void mostrarNumerosSegunModoDeFuncionamiento(final char funcionamiento, char orientacion) {
     	if (funcionamiento == 'l') {
-			mostrarNumerosSegunOrientacion();
+			mostrarNumerosSegunOrientacion(orientacion);
 			
 		} else {
 			if (orientacion == 'h') {
@@ -91,20 +124,15 @@ public class Program {
 	    }
     }
     
-    private static void escribirSobreArchivo(final String[] arg) {
-    	String salida = String.valueOf(arg[1]);
-		String[] salidaPartes = salida.split("=");
-		String nombreDelArchivo = salidaPartes[1];
-		char funcionamiento = 'l';
-		if (arg.length == 5) {
-			String modoFuncionamiento = String.valueOf(arg[3]);
-			funcionamiento = modoFuncionamiento.charAt(3);
+    private static void escribirSobreArchivo(String archivoDestino, char funcionamiento) {
+		if (funcionamiento == ' ') {
+			funcionamiento = 'l';
 		}
     	File archivo;
     	BufferedWriter escritura;
-    	System.out.printf("fibo<%d> guardado en %s.txt", numero, nombreDelArchivo);
+    	System.out.printf("fibo<%d> guardado en %s.txt", numero, archivoDestino);
     	try {
-        	archivo = new File(nombreDelArchivo);
+        	archivo = new File(archivoDestino);
     		escritura = new BufferedWriter(new FileWriter(archivo));
     		if (funcionamiento == 'l') {
     			escritura.write("fibo<" + String.valueOf(numero) + ">: ");
