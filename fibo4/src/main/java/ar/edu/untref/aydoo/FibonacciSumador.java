@@ -11,9 +11,11 @@ public class FibonacciSumador {
         String opcion = opciones[posicion].substring(0, 2);
 
         if (opciones[posicion].equals("-m=s")) {
-            this.resultado = this.calcularSumaFibonachi(numero, opciones);
+            this.resultado = this.calcularSumaFibonacci(numero, opciones);
         } else if (opciones[posicion].equals("-m=l") || opcion.equals("-f")) {
             this.resultado = this.fibonacciLargo2.calcularFibonacci(numero, opciones[0]);
+        } else if (opciones[posicion].equals("-n=p")) {
+            this.resultado = this.calcularNumerosParesDeSerieDeFibonacci(numero, opciones);
         } else {
             this.resultado = "Opciones no validas";
         }
@@ -21,7 +23,7 @@ public class FibonacciSumador {
         return this.resultado;
     }
 
-    public String calcularSumaFibonachi(final int numero, final String[] opciones) {
+    public String calcularSumaFibonacci(final int numero, final String[] opciones) {
         this.resultado = "fibo<" + numero + ">s:";
         int total = 0;
 
@@ -37,5 +39,40 @@ public class FibonacciSumador {
         }
 
         return this.resultado;
+    }
+    
+    public String calcularNumerosParesDeSerieDeFibonacci(final int numero, final String[] opciones) {
+    	int numeroPar = 0;
+    	char orientacion = opciones[0].charAt(3);
+    	char direccion = opciones[0].charAt(4);
+    	this.resultado = "fibo<" + numero + ">:";
+    	if (direccion == 'd') {
+    		for (int i = 1; i < numero; i++) {
+        		numeroPar = Fibonacci.calcularFibonacci(i); 
+        		if (numeroPar % 2 == 0) {
+        			if (orientacion == 'h') {
+        				this.resultado += " " + numeroPar;
+        			} else {
+        				this.resultado += "\n";
+        				this.resultado += " " + numeroPar;
+        			}
+        			
+        		}
+        	}
+    	} else if (direccion == 'i') {
+    		for (int i = numero; i > 0; i--) {
+        		numeroPar = Fibonacci.calcularFibonacci(i); 
+        		if (numeroPar % 2 == 0) {
+        			if (orientacion == 'h') {
+        				this.resultado += " " + numeroPar;
+        			} else {
+        				this.resultado += "\n";
+        				this.resultado += " " + numeroPar;
+        			}
+        			
+        		}
+        	}
+    	}
+    	return this.resultado;
     }
 }

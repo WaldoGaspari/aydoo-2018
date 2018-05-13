@@ -26,6 +26,9 @@ public class FibonacciLargo2 {
             case "-o=pi":
                 this.fibonacciProgresivaInversa(numero);
                 break;
+            case "-n=p":
+                this.calcularNumerosPares(numero);
+                break;
             default:
                 this.fibonacci = "Opciones no validas";
                 break;
@@ -99,5 +102,16 @@ public class FibonacciLargo2 {
             }
             this.fibonacci += "\n";
         }
+    }
+    
+    private void calcularNumerosPares(final int numero) {
+    	int numeroPar = 0;
+    	this.fibonacci = "fibo<" + numero + ">:";
+    	for (int i = 1; i < numero; i++) {
+    		numeroPar = Fibonacci.calcularFibonacci(i); 
+    		if (numeroPar % 2 == 0) {
+    			this.fibonacci += " " + numeroPar;
+    		}
+    	}
     }
 }
