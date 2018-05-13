@@ -1,7 +1,7 @@
 package ar.edu.untref.aydoo;
 
 public class FibonacciLargo2 {
-    private Fibonachi fibo = new Fibonachi();
+    private Fibonacci fibo = new Fibonacci();
     private int[] resultadoInverso;
     private String fibonacci;
 
@@ -33,7 +33,7 @@ public class FibonacciLargo2 {
     private void fibonachiHorizontalDirecto(final int numero) {
         this.fibonacci = "fibo<" + numero + ">:";
         for (int i = 0; i < numero; i++) {
-            this.fibonacci += " " + this.fibo.calcularFibonachi(i);
+            this.fibonacci += " " + this.fibo.calcularFibonacci(i);
         }
     }
 
@@ -51,7 +51,7 @@ public class FibonacciLargo2 {
         this.fibonacci = "fibo<" + numero + ">:";
 
         for (int i = 0; i < numero; i++) {
-            this.fibonacci += "\n" + this.fibo.calcularFibonachi(i);
+            this.fibonacci += "\n" + this.fibo.calcularFibonacci(i);
         }
 
     }
@@ -69,7 +69,7 @@ public class FibonacciLargo2 {
     private void inversor(final int numero) {
         this.resultadoInverso = new int[numero];
         for (int i = 0; i <= numero - 1; i++) {
-            this.resultadoInverso[i] = this.fibo.calcularFibonachi(i);
+            this.resultadoInverso[i] = this.fibo.calcularFibonacci(i);
         }
     }
 }

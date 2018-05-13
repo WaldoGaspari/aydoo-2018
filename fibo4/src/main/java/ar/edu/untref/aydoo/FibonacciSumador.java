@@ -2,7 +2,7 @@ package ar.edu.untref.aydoo;
 
 public class FibonacciSumador {
 
-    private Fibonachi fibo = new Fibonachi();
+    private Fibonacci fibo = new Fibonacci();
     private FibonacciLargo2 fibonacciLargo2 = new FibonacciLargo2();
     private String resultado;
 
@@ -27,7 +27,7 @@ public class FibonacciSumador {
         int total = 0;
 
         for (int i = 0; i < numero; i++) {
-            total += this.fibo.calcularFibonachi(i);
+            total += this.fibo.calcularFibonacci(i);
         }
 
         String orientacion = opciones[0].substring(0, 4);

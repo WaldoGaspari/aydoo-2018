@@ -7,7 +7,7 @@ public class Program {
 
     public static final void main(final String[] arg) {
 
-        Fibonachi fibo = new Fibonachi();
+        Fibonacci fibo = new Fibonacci();
         FibonacciLargo2 fibonacciLargo2 = new FibonacciLargo2();
         FibonacciSumador sumador = new FibonacciSumador();
         FibonacciPrinter printer = new FibonacciPrinter();
