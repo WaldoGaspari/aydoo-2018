@@ -4,7 +4,7 @@ public class Fibonacci {
 
     private String fibonacci;
 
-    public int calcularFibonacci(final int numero) {
+    public static int calcularFibonacci(final int numero) {
         if (numero <= 0) {
             return 0;
         } else if (numero == 1) {
@@ -17,7 +17,7 @@ public class Fibonacci {
     public String fibonacciNormal(final int numero) {
         this.fibonacci = "fibo<" + numero + ">:";
         for (int i = 0; i < numero; i++) {
-            this.fibonacci += " " + this.calcularFibonacci(i);
+            this.fibonacci += " " + calcularFibonacci(i);
         }
         return this.fibonacci;
     }
