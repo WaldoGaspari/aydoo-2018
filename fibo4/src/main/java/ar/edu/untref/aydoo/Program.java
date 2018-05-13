@@ -8,7 +8,6 @@ public class Program {
     public static final void main(final String[] arg) {
 
         Fibonacci fibo = new Fibonacci();
-        FibonacciLargo2 fibonacciLargo2 = new FibonacciLargo2();
         FibonacciSumador sumador = new FibonacciSumador();
         FibonacciPrinter printer = new FibonacciPrinter();
 
@@ -29,7 +28,7 @@ public class Program {
                 System.out.println(resultado);
                 break;
             case 2:
-                resultado = fibonacciLargo2.calcularFibonacci(numero, arg[0]);
+                resultado = FibonacciLargo2.calcularFibonacci(numero, arg[0]);
                 System.out.println(resultado);
                 break;
             case 3:
@@ -44,7 +43,6 @@ public class Program {
                 System.out.println("Opciones no validas");
                 break;
         }
-
     }
 
     private static void validar(final String[] args) {
@@ -56,5 +54,4 @@ public class Program {
             throw new IllegalArgumentException();
         }
     }
-
 }

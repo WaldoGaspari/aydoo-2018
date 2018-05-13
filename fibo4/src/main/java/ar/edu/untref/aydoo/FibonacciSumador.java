@@ -2,7 +2,6 @@ package ar.edu.untref.aydoo;
 
 public class FibonacciSumador {
 
-    private FibonacciLargo2 fibonacciLargo2 = new FibonacciLargo2();
     private String resultado;
 
     public String calcularFibonacci(final int numero, final String[] opciones) {
@@ -13,13 +12,12 @@ public class FibonacciSumador {
         if (opciones[posicion].equals("-m=s")) {
             this.resultado = this.calcularSumaFibonacci(numero, opciones);
         } else if (opciones[posicion].equals("-m=l") || opcion.equals("-f")) {
-            this.resultado = this.fibonacciLargo2.calcularFibonacci(numero, opciones[0]);
+            this.resultado = FibonacciLargo2.calcularFibonacci(numero, opciones[0]);
         } else if (opciones[posicion].equals("-n=p")) {
             this.resultado = this.calcularNumerosParesDeSerieDeFibonacci(numero, opciones);
         } else {
             this.resultado = "Opciones no validas";
         }
-
         return this.resultado;
     }
 
@@ -37,10 +35,9 @@ public class FibonacciSumador {
         } else if (orientacion.equals("-o=v")) {
             this.resultado = this.resultado + "\n" + total;
         }
-
         return this.resultado;
     }
-    
+
     public String calcularNumerosParesDeSerieDeFibonacci(final int numero, final String[] opciones) {
     	int numeroPar = 0;
     	char orientacion = opciones[0].charAt(3);
@@ -55,8 +52,7 @@ public class FibonacciSumador {
         			} else {
         				this.resultado += "\n";
         				this.resultado += " " + numeroPar;
-        			}
-        			
+        			}   			
         		}
         	}
     	} else if (direccion == 'i') {
@@ -69,7 +65,6 @@ public class FibonacciSumador {
         				this.resultado += "\n";
         				this.resultado += " " + numeroPar;
         			}
-        			
         		}
         	}
     	}

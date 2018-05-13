@@ -41,6 +41,5 @@ public class FibonacciPrinter {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

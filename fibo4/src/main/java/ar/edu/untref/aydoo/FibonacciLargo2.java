@@ -2,115 +2,107 @@ package ar.edu.untref.aydoo;
 
 public class FibonacciLargo2 {
 
-    private int[] resultadoInverso;
-    private String fibonacci;
+    private static int[] resultadoInverso;
+    private static String fibonacci;
 
-    public String calcularFibonacci(final int numero, final String opcion) {
+    public static String calcularFibonacci(final int numero, final String opcion) {
 
         switch (opcion) {
             case "-o=hd":
-                this.fibonacciHorizontalDirecto(numero);
+               fibonacciHorizontalDirecto(numero);
                 break;
             case "-o=hi":
-                this.fibonacciHorizontalInverso(numero);
+                fibonacciHorizontalInverso(numero);
                 break;
             case "-o=vd":
-                this.fibonacciVerticalDirecto(numero);
+                fibonacciVerticalDirecto(numero);
                 break;
             case "-o=vi":
-                this.fibonacciVerticalInverso(numero);
+                fibonacciVerticalInverso(numero);
                 break;
             case "-o=pd":
-                this.fibonacciProgresivaDirecta(numero);
+                fibonacciProgresivaDirecta(numero);
                 break;
             case "-o=pi":
-                this.fibonacciProgresivaInversa(numero);
+                fibonacciProgresivaInversa(numero);
                 break;
             case "-n=p":
-                this.calcularNumerosPares(numero);
+                calcularNumerosPares(numero);
                 break;
             default:
-                this.fibonacci = "Opciones no validas";
+                fibonacci = "Opciones no validas";
                 break;
         }
 
-        return this.fibonacci;
-
+        return fibonacci;
     }
 
-
-    private void fibonacciHorizontalDirecto(final int numero) {
-        this.fibonacci = "fibo<" + numero + ">:";
+    private static void fibonacciHorizontalDirecto(final int numero) {
+        fibonacci = "fibo<" + numero + ">:";
         for (int i = 0; i < numero; i++) {
-            this.fibonacci += " " + Fibonacci.calcularFibonacci(i);
+            fibonacci += " " + Fibonacci.calcularFibonacci(i);
         }
     }
 
-    private void fibonacciHorizontalInverso(final int numero) {
-        this.fibonacci = "fibo<" + numero + ">:";
-        this.inversor(numero);
-
+    private static void fibonacciHorizontalInverso(final int numero) {
+        fibonacci = "fibo<" + numero + ">:";
+        inversor(numero);
         for (int i = numero - 1; i >= 0; i--) {
-            this.fibonacci += " " + this.resultadoInverso[i];
+            fibonacci += " " + resultadoInverso[i];
         }
-
     }
 
-    private void fibonacciVerticalDirecto(final int numero) {
-        this.fibonacci = "fibo<" + numero + ">:";
-
+    private static void fibonacciVerticalDirecto(final int numero) {
+        fibonacci = "fibo<" + numero + ">:";
         for (int i = 0; i < numero; i++) {
-            this.fibonacci += "\n" + Fibonacci.calcularFibonacci(i);
+            fibonacci += "\n" + Fibonacci.calcularFibonacci(i);
         }
-
     }
 
-    private void fibonacciVerticalInverso(final int numero) {
-        this.fibonacci = "fibo<" + numero + ">:";
-        this.inversor(numero);
-
+    private static void fibonacciVerticalInverso(final int numero) {
+        fibonacci = "fibo<" + numero + ">:";
+        inversor(numero);
         for (int i = numero - 1; i >= 0; i--) {
-            this.fibonacci += "\n" + this.resultadoInverso[i];
+            fibonacci += "\n" + resultadoInverso[i];
         }
-
     }
 
-    private void inversor(final int numero) {
-        this.resultadoInverso = new int[numero];
+    private static void inversor(final int numero) {
+        resultadoInverso = new int[numero];
         for (int i = 0; i <= numero - 1; i++) {
-            this.resultadoInverso[i] = Fibonacci.calcularFibonacci(i);
+            resultadoInverso[i] = Fibonacci.calcularFibonacci(i);
         }
     }
-    
-    private void fibonacciProgresivaDirecta(final int numero) {
-    	this.fibonacci = "fibo<" + numero + ">:";
-    	this.fibonacci += "\n";
+
+    private static void fibonacciProgresivaDirecta(final int numero) {
+    	fibonacci = "fibo<" + numero + ">:";
+    	fibonacci += "\n";
     	for (int i = 0; i < numero; i++) {
             for (int j = 0; j <= i; j++) {
-            	this.fibonacci += " " + Fibonacci.calcularFibonacci(j);
+            	fibonacci += " " + Fibonacci.calcularFibonacci(j);
             }
-            this.fibonacci += "\n";
+            fibonacci += "\n";
         }
     }
-    
-    private void fibonacciProgresivaInversa(final int numero) {
-    	this.fibonacci = "fibo<" + numero + ">:";
-    	this.fibonacci += "\n";
+
+    private static void fibonacciProgresivaInversa(final int numero) {
+    	fibonacci = "fibo<" + numero + ">:";
+    	fibonacci += "\n";
     	for (int i = numero - 1; i >= 0; i--) {
             for (int j = numero - 1; j >= i; j--) {
-            	this.fibonacci += " " + Fibonacci.calcularFibonacci(j);
+            	fibonacci += " " + Fibonacci.calcularFibonacci(j);
             }
-            this.fibonacci += "\n";
+            fibonacci += "\n";
         }
     }
-    
-    private void calcularNumerosPares(final int numero) {
+
+    private static void calcularNumerosPares(final int numero) {
     	int numeroPar = 0;
-    	this.fibonacci = "fibo<" + numero + ">:";
+    	fibonacci = "fibo<" + numero + ">:";
     	for (int i = 1; i < numero; i++) {
     		numeroPar = Fibonacci.calcularFibonacci(i); 
     		if (numeroPar % 2 == 0) {
-    			this.fibonacci += " " + numeroPar;
+    			fibonacci += " " + numeroPar;
     		}
     	}
     }
