@@ -92,5 +92,12 @@ public class FibonacciLargo2 {
     
     private void fibonacciProgresivaInversa(final int numero) {
     	this.fibonacci = "fibo<" + numero + ">:";
+    	this.fibonacci += "\n";
+    	for (int i = numero - 1; i >= 0; i--) {
+            for (int j = numero - 1; j >= i; j--) {
+            	this.fibonacci += " " + Fibonacci.calcularFibonacci(j);
+            }
+            this.fibonacci += "\n";
+        }
     }
 }
