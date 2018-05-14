@@ -10,7 +10,11 @@ public class FibonacciSumador {
         String opcion = opciones[posicion].substring(0, 2);
 
         if (opciones[posicion].equals("-m=s")) {
-            this.resultado = this.calcularSumaFibonacci(numero, opciones);
+        	if (opciones[0].equals("-n=p")) {
+        		this.resultado = this.calcularSumatoriaDeNumerosPares(numero);
+        	} else {
+        		this.resultado = this.calcularSumaFibonacci(numero, opciones);
+        	}
         } else if (opciones[posicion].equals("-m=l") || opcion.equals("-f")) {
             this.resultado = FibonacciLargo2.calcularFibonacci(numero, opciones[0]);
         } else if (opciones[posicion].equals("-n=p")) {
@@ -68,6 +72,20 @@ public class FibonacciSumador {
         		}
         	}
     	}
+    	return this.resultado;
+    }
+    
+    public String calcularSumatoriaDeNumerosPares(final int numero) {
+    	int numeroPar = 0;
+    	int total = 0;
+    	this.resultado = "fibo<" + numero + ">s:";
+    	for (int i = 1; i < numero; i++) {
+    		numeroPar = Fibonacci.calcularFibonacci(i);
+    		if (numeroPar % 2 == 0) {
+    			total += numeroPar;
+    		}
+    	}
+    	this.resultado += " " + total;
     	return this.resultado;
     }
 }

@@ -6,7 +6,7 @@ public class FibonacciLargo2 {
     private static String fibonacci;
 
     public static String calcularFibonacci(final int numero, final String opcion) {
-
+    	fibonacci = "fibo<" + numero + ">:";
         switch (opcion) {
             case "-o=hd":
                fibonacciHorizontalDirecto(numero);
@@ -38,14 +38,12 @@ public class FibonacciLargo2 {
     }
 
     private static void fibonacciHorizontalDirecto(final int numero) {
-        fibonacci = "fibo<" + numero + ">:";
         for (int i = 0; i < numero; i++) {
             fibonacci += " " + Fibonacci.calcularFibonacci(i);
         }
     }
 
     private static void fibonacciHorizontalInverso(final int numero) {
-        fibonacci = "fibo<" + numero + ">:";
         inversor(numero);
         for (int i = numero - 1; i >= 0; i--) {
             fibonacci += " " + resultadoInverso[i];
@@ -53,14 +51,12 @@ public class FibonacciLargo2 {
     }
 
     private static void fibonacciVerticalDirecto(final int numero) {
-        fibonacci = "fibo<" + numero + ">:";
         for (int i = 0; i < numero; i++) {
             fibonacci += "\n" + Fibonacci.calcularFibonacci(i);
         }
     }
 
     private static void fibonacciVerticalInverso(final int numero) {
-        fibonacci = "fibo<" + numero + ">:";
         inversor(numero);
         for (int i = numero - 1; i >= 0; i--) {
             fibonacci += "\n" + resultadoInverso[i];
@@ -75,7 +71,6 @@ public class FibonacciLargo2 {
     }
 
     private static void fibonacciProgresivaDirecta(final int numero) {
-    	fibonacci = "fibo<" + numero + ">:";
     	fibonacci += "\n";
     	for (int i = 0; i < numero; i++) {
             for (int j = 0; j <= i; j++) {
@@ -86,7 +81,6 @@ public class FibonacciLargo2 {
     }
 
     private static void fibonacciProgresivaInversa(final int numero) {
-    	fibonacci = "fibo<" + numero + ">:";
     	fibonacci += "\n";
     	for (int i = numero - 1; i >= 0; i--) {
             for (int j = numero - 1; j >= i; j--) {
@@ -98,7 +92,6 @@ public class FibonacciLargo2 {
 
     private static void calcularNumerosPares(final int numero) {
     	int numeroPar = 0;
-    	fibonacci = "fibo<" + numero + ">:";
     	for (int i = 1; i < numero; i++) {
     		numeroPar = Fibonacci.calcularFibonacci(i); 
     		if (numeroPar % 2 == 0) {
