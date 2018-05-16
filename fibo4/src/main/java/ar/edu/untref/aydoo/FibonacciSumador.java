@@ -16,9 +16,9 @@ public class FibonacciSumador {
         		this.resultado = this.calcularSumaFibonacci(numero, opciones);
         	}
         } else if (opciones[posicion].equals("-m=l") || opcion.equals("-f")) {
-            this.resultado = FibonacciLargo2.calcularFibonacci(numero, opciones[0]);
+            this.resultado = AnalizadorDeOpciones.calcularFibonacci(numero, opciones[0]);
         } else if (opciones[posicion].equals("-n=p")) {
-            this.resultado = this.calcularNumerosParesDeSerieDeFibonacci(numero, opciones);
+        	this.resultado = this.calcularNumerosParesDeSerieDeFibonacci(numero, opciones);
         } else {
             this.resultado = "Opciones no validas";
         }

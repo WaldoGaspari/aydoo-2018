@@ -77,11 +77,11 @@ I: el principio de interface Segregation tampoco se puede corroborar ya que no h
 
 D: el principio de Dependency Inversion lo viola ya que en las clases FibonacciSumador y FibonacciLargo2 hace new de la clase Fibonacci cuando podria directamente llamar a los metodos de dichas clases y guardar lo que necesite de dichos metodos en la clase en la que esta manejando en ese momento. Es mejor ir siempre a lo mas abstracto. 
 
-Mas alla de los principios SOLID, el programa presenta otros detalles que generan "ruido". Por ejemplo, hay una clase llamada FibonacciLargo2 que simplemente con el nombre no se sabe que realiza hasta que se ve sus metodos y ahi se puede deducir lo que hace realmente. Seria conveniente que presente un nombre mas claro. Como se dijo anteriormente, presenta algunas cadenas de if al igual que cadenas de case. Hecho de esa manera, si se quiere extender el programa con mas opciones seria algo tedioso y largo para los metodos que presenten dichas cadenas. 
+Mas alla de los principios SOLID, el programa presenta otros detalles que generan "ruido". Por ejemplo, hay una clase llamada FibonacciLargo2 que simplemente con el nombre no se sabe que realiza hasta que se ve sus metodos y ahi se puede deducir lo que hace realmente. Seria conveniente que presente un nombre mas claro. Como se dijo anteriormente, presenta algunas cadenas de if al igual que cadenas de case. Realizado de esa manera, si se quiere extender el programa con mas opciones seria algo tedioso y largo para los metodos que presenten dichas cadenas. 
 Otra cosa que podria ser mas util es en vez de utilizar un String para el resultado final de la serie de Fibonacci de un numero seria usar un array de enteros para poder manejar mejor los parametros.
 Otro detalle al analizar el programa es, por un lado, la falta de validaciones y con ello el uso de excepciones. Por el otro lado, utiliza una sola excepcion que podria ser mas clara en el nombre y, aun mejor, generar sus propias excepciones.
 El nombre de la clase Fibonachi esta mal escrito. Tendria que decir Fibonacci.
-En cuanto al modelo, en lineas generales, esta bien realizado, con varias clases que realizan cada una distintas tareas. 
+En cuanto al modelo no esta bien realizado, mas alla que presente varias clases que realizan cada una distintas tareas. Hay mucho codigo redundante y casi un metodo para cada posibilidad para cada uno de los parametros. Esto hace que no se abstraiga al momento de pensar el problema en cuestion.
 
 
 Waldo Gaspari      

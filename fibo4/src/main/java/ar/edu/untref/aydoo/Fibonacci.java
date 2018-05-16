@@ -2,7 +2,7 @@ package ar.edu.untref.aydoo;
 
 public class Fibonacci {
 
-    private String fibonacci;
+    private static String fibonacci;
 
     public static int calcularFibonacci(final int numero) {
         if (numero <= 0) {
@@ -14,12 +14,11 @@ public class Fibonacci {
         }
     }
 
-    public String fibonacciNormal(final int numero) {
-        this.fibonacci = "fibo<" + numero + ">:";
+    public static String fibonacciNormal(final int numero) {
+        fibonacci = "fibo<" + numero + ">:";
         for (int i = 0; i < numero; i++) {
-            this.fibonacci += " " + calcularFibonacci(i);
+            fibonacci += " " + calcularFibonacci(i);
         }
-        return this.fibonacci;
+        return fibonacci;
     }
-
 }

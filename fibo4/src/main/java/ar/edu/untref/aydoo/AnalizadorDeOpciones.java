@@ -1,6 +1,6 @@
 package ar.edu.untref.aydoo;
 
-public class FibonacciLargo2 {
+public class AnalizadorDeOpciones {
 
     private static int[] resultadoInverso;
     private static String fibonacci;

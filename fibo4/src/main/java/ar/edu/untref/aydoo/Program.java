@@ -6,8 +6,6 @@ public class Program {
     }
 
     public static final void main(final String[] arg) {
-
-        Fibonacci fibo = new Fibonacci();
         FibonacciSumador sumador = new FibonacciSumador();
         FibonacciPrinter printer = new FibonacciPrinter();
 
@@ -24,11 +22,11 @@ public class Program {
 
         switch (largo) {
             case 1:
-                resultado = fibo.fibonacciNormal(numero);
+                resultado = Fibonacci.fibonacciNormal(numero);
                 System.out.println(resultado);
                 break;
             case 2:
-                resultado = FibonacciLargo2.calcularFibonacci(numero, arg[0]);
+                resultado = AnalizadorDeOpciones.calcularFibonacci(numero, arg[0]);
                 System.out.println(resultado);
                 break;
             case 3:
