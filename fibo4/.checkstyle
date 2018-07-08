@@ -6,7 +6,7 @@
     <property name="checkstyle.suppressions.file" value="C:\Users\Equipo\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\WaldoGaspari-Fibo4\com.basistech.m2e.code.quality.checkstyleConfigurator\checkstyle-suppressions-validate.xml"/>
     <property name="checkstyle.header.file" value="C:\Users\Equipo\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\WaldoGaspari-Fibo4\com.basistech.m2e.code.quality.checkstyleConfigurator\checkstyle-header-validate.txt"/>
   </local-check-config>
-  <fileset name="java-sources-validate" enabled="false" check-config-name="maven-checkstyle-plugin validate" local="true">
+  <fileset name="java-sources-validate" enabled="true" check-config-name="maven-checkstyle-plugin validate" local="true">
     <file-match-pattern match-pattern="^src/main/java/.*\.java" include-pattern="true"/>
     <file-match-pattern match-pattern="^src/main/resources.*\.properties" include-pattern="true"/>
     <file-match-pattern match-pattern="^src/test/resources.*\.properties" include-pattern="true"/>
