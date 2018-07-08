@@ -1,0 +1,3 @@
+﻿Ejercicio Fibonacci 4
+
+Aclaraciones: el programa funciona de acuerdo a las nuevas funcionalidades dadas. El resultado, para mi gusto, no es el mejor ya que opté por continuar usando tanto el modelo como el codigo entregado, contemplando lo dicho acerca de si hacer un refactor "grande" o seguir con el modelo como estaba agregando las nuevas funcionalidades. Mas que nada esto fue por una cuestion de tiempo y porque pensé que no iba a llegar haciendolo como me hubiera gustado descartando varias cosas de lo ya realizado. Fue claramente un tema de decisión a la hora de continuar con el ejercicio. Digo esto ya que no me encontré satisfecho con lo terminado y creo que puede estar mucho mejor, teniendo en cuenta todo lo visto en las clases. 
